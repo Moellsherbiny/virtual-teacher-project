@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import axios from "axios";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
@@ -13,6 +12,7 @@ import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { useSession } from "next-auth/react";
 import { AvatarImage } from "@radix-ui/react-avatar";
 import Loader from "@/components/common/Loader";
+import axiosInstance from "@/lib/apiHandler";
 
 type Message = {
   id: number;
@@ -57,16 +57,17 @@ export default function ChatPage() {
   };
   useEffect(() => {
     if (session.status === "authenticated" && userId) fetchMessages();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [session.status]);
+  }, [session.status, userId]);
 
   const fetchMessages = async () => {
     if (userId) {
       try {
         console.log(session.status);
 
-        const response = await axios.get(
-          `http://localhost:3000/api/chat/messages?userId=${userId}`
+        const response = await axiosInstance.get(
+          `/chat/messages?userId=${userId}`
         );
         setMessages(response.data.messages);
       } catch (error) {
@@ -88,11 +89,12 @@ export default function ChatPage() {
 
       try {
         // Get AI response
-        const ai = await axios.post("http://localhost:3000/api/chat", {
+        const ai = await axiosInstance.post("http://localhost:3000/api/chat", {
           prompt: newMessage.content,
+          userId,
         });
         // Store user message
-        await axios.post("http://localhost:3000/api/chat/messages", {
+        await axiosInstance.post("http://localhost:3000/api/chat/messages", {
           content: newMessage.content,
           sender: "student",
           userId,
@@ -105,7 +107,7 @@ export default function ChatPage() {
         };
 
         // Store AI message
-        await axios.post("http://localhost:3000/api/chat/messages", {
+        await axiosInstance.post("http://localhost:3000/api/chat/messages", {
           content: aiResponse.content,
           sender: "ai",
           userId,

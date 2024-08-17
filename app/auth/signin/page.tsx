@@ -119,7 +119,7 @@ export default function LoginForm() {
                 type="button"
                 className="w-full"
                 disabled={isLoading}
-                onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
+                onClick={() => signIn("google", { redirectTo: "/" })}
               >
                 Login with Google
                 <span className="mr-2 text-2xl">

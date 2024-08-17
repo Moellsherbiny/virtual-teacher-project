@@ -47,16 +47,22 @@ export default function Home() {
         initial="hidden"
         animate="visible"
       >
-        <motion.section className="text-center" variants={itemVariants}>
-          <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl mb-4">
-            مرحبًا بك في المعلم الذكي
+        <motion.section
+          className="text-center bg-gradient-to-tr from-blue-600 to-blue-300  rounded-xl py-4"
+          variants={itemVariants}
+        >
+          <h1 className="scroll-m-20 text-white text-xl font-extrabold tracking-tight lg:text-2xl mb-2">
+            مرحبًا بك أنا معلمك الافتراضي
           </h1>
-          <p className="text-xl text-muted-foreground mb-8">
-            اكتشف طريقة جديدة للتعلم مع معلمك الشخصي المدعوم بالذكاء الاصطناعي
+          <p className="text-xl text-blue-100 text-muted-foreground mb-4">
+            اكتشف طريقة جديدة للتعلم مع معلمك الافتراضي المدعوم بالذكاء
+            الاصطناعي
           </p>
-          <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.95 }}>
+          <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.95 }}>
             <Link href="/chat">
-              <Button size="lg">ابدأ التعلم الآن</Button>
+              <Button variant="secondary" size="lg">
+                ابدأ التعلم الآن
+              </Button>
             </Link>
           </motion.div>
         </motion.section>
@@ -77,7 +83,7 @@ export default function Home() {
                 ].map((feature, index) => (
                   <motion.li
                     key={index}
-                    className="flex items-center space-x-2 space-x-reverse"
+                    className="flex items-center space-x-2 space-x-reverse cursor-pointer"
                     variants={itemVariants}
                     whileHover={{ scale: 1.03 }}
                   >
