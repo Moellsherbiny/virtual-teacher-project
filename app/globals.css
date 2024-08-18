@@ -81,5 +81,17 @@
   }
   body {
     @apply bg-background text-foreground;
+    min-height: 100vh;
+  }
+}
+
+.code-block-wrapper {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+@media (max-width: 640px) {
+  .code-block-wrapper pre {
+    font-size: 0.4rem !important;
   }
 }

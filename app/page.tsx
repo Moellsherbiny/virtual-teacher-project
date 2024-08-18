@@ -33,14 +33,6 @@ const itemVariants = {
 export default function Home() {
   return (
     <div dir="rtl" className="container mx-auto px-4 py-8">
-      <Head>
-        <title>المعلم الذكي - الصفحة الرئيسية</title>
-        <meta
-          name="description"
-          content="تعلم بسهولة مع المعلم الذكي، روبوت الدردشة التعليمي الخاص بك"
-        />
-      </Head>
-
       <motion.main
         className="space-y-10"
         variants={containerVariants}
@@ -54,7 +46,7 @@ export default function Home() {
           <h1 className="scroll-m-20 text-white text-xl font-extrabold tracking-tight lg:text-2xl mb-2">
             مرحبًا بك أنا معلمك الافتراضي
           </h1>
-          <p className="text-xl text-blue-100 text-muted-foreground mb-4">
+          <p className="text-xl text-white text-muted-foreground mb-4">
             اكتشف طريقة جديدة للتعلم مع معلمك الافتراضي المدعوم بالذكاء
             الاصطناعي
           </p>

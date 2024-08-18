@@ -90,8 +90,6 @@ export const authOptions: AuthOptions = {
   },
   pages: {
     signIn: "/auth/signin",
-    verifyRequest: "/auth/auth-success",
-    error: "/auth/auth-error",
   },
   session: {
     strategy: "jwt",

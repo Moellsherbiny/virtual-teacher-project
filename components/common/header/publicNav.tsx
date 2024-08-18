@@ -10,10 +10,10 @@ export default function Header() {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   return (
     <header
-      className="sticky top-0 bg-white/5 dark:bg-white/5 backdrop-blur-lg py-2 px-6 z-[50]"
+      className="sticky top-0 bg-white/5 dark:bg-white/5 backdrop-blur-lg py-2 px-8 z-[50]"
       dir="rtl"
     >
-      <div className="flex items-center justify-between">
+      <div className="container mx-auto flex items-center justify-between">
         <Link href="/" className="flex">
           <span className="text-lg font-black bg-clip-text text-transparent bg-gradient-to-br from-blue-600 to-blue-300">
             المعــلــــم

@@ -42,14 +42,21 @@ export function CourseCard({
       <CardContent className="p-6">
         <CardTitle className="text-xl mb-2">{title}</CardTitle>
       </CardContent>
-      <CardFooter className="flex justify-between items-center bg-gray-50 dark:bg-gray-700">
-        <Button asChild className="flex w-full">
-          <Link href={`/courses/${id}`}>التفاصيل</Link>
+      <CardFooter className="flex justify-between items-center">
+        <Button className="flex w-full">
+          {isEnrolled ? (
+            <Link href={`/my-courses/${id}`}>بدء الدراسة</Link>
+          ) : (
+            <Link href={`/courses/${id}`}>التفاصيل</Link>
+          )}
         </Button>
         {isEnrolled && (
-          <Button variant="link" asChild className="flex w-full">
+          <Button
+            variant="link"
+            className="flex justify-end gap-1 items-center w-full text-gray-500 hover:text-blue-600 hover:gap-2 duration-300"
+          >
             <ArrowUpRight />
-            <Link href={`/quiz/${id}`}>التفاصيل</Link>
+            <Link href={`/quiz/${id}`}>اجراء اختبار</Link>
           </Button>
         )}
       </CardFooter>

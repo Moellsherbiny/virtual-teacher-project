@@ -5,6 +5,8 @@ import { ThemeProvider } from "@/components/theme-provider";
 import NextAuthProvider from "./context/NextAuthProvider";
 import Transition from "./Transition";
 import Navbar from "@/components/common/header/navbar";
+import Footer from "@/components/common/footer";
+import { Toaster } from "@/components/ui/toaster";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -31,6 +33,8 @@ export default function RootLayout({
             <NextAuthProvider>
               <Navbar />
               {children}
+              <Toaster />
+              <Footer />
             </NextAuthProvider>
           </ThemeProvider>
         </body>

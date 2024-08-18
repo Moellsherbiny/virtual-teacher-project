@@ -4,15 +4,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import Markdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import rehypeRaw from "rehype-raw";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { useSession } from "next-auth/react";
 import { AvatarImage } from "@radix-ui/react-avatar";
 import Loader from "@/components/common/Loader";
 import axiosInstance from "@/lib/apiHandler";
+import { renderMessageContent } from "@/components/ai-message-format/messageFormater";
+
 
 type Message = {
   id: number;
@@ -20,19 +17,7 @@ type Message = {
   sender: "student" | "ai";
 };
 
-const CodeBlock = ({
-  language,
-  value,
-}: {
-  language: string;
-  value: string;
-}) => {
-  return (
-    <SyntaxHighlighter language={language} style={dracula}>
-      {value}
-    </SyntaxHighlighter>
-  );
-};
+
 
 export default function ChatPage() {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -123,50 +108,50 @@ export default function ChatPage() {
     }
   };
 
-  const renderMessageContent = (content: string) => {
-    const codeBlockRegex = /```(\w+)?\n([\s\S]+?)\n```/g;
-    const parts = [];
-    let lastIndex = 0;
-    let match;
+  // const renderMessageContent = (content: string) => {
+  //   const codeBlockRegex = /```(\w+)?\n([\s\S]+?)\n```/g;
+  //   const parts = [];
+  //   let lastIndex = 0;
+  //   let match;
 
-    while ((match = codeBlockRegex.exec(content)) !== null) {
-      // Add text before code block
-      if (match.index > lastIndex) {
-        parts.push(
-          <Markdown key={lastIndex} remarkPlugins={[remarkGfm]}>
-            {content.slice(lastIndex, match.index)}
-          </Markdown>
-        );
-      }
+  //   while ((match = codeBlockRegex.exec(content)) !== null) {
+  //     // Add text before code block
+  //     if (match.index > lastIndex) {
+  //       parts.push(
+  //         <Markdown key={lastIndex} remarkPlugins={[remarkGfm]}>
+  //           {content.slice(lastIndex, match.index)}
+  //         </Markdown>
+  //       );
+  //     }
 
-      // Add code block
-      const [, language, code] = match;
-      parts.push(
-        <CodeBlock
-          key={match.index}
-          language={language || "javascript"}
-          value={code.trim()}
-        />
-      );
+  //     // Add code block
+  //     const [, language, code] = match;
+  //     parts.push(
+  //       <CodeBlock
+  //         key={match.index}
+  //         language={language || "javascript"}
+  //         value={code.trim()}
+  //       />
+  //     );
 
-      lastIndex = match.index + match[0].length;
-    }
+  //     lastIndex = match.index + match[0].length;
+  //   }
 
-    // Add remaining text after last code block
-    if (lastIndex < content.length) {
-      parts.push(
-        <Markdown key={lastIndex} remarkPlugins={[remarkGfm]}>
-          {content.slice(lastIndex)}
-        </Markdown>
-      );
-    }
+  //   // Add remaining text after last code block
+  //   if (lastIndex < content.length) {
+  //     parts.push(
+  //       <Markdown key={lastIndex} remarkPlugins={[remarkGfm]}>
+  //         {content.slice(lastIndex)}
+  //       </Markdown>
+  //     );
+  //   }
 
-    return parts;
-  };
+  //   return parts;
+  // };
 
   return (
-    <div className="flex flex-col bg-gray-200 dark:bg-gray-950 h-[calc(100vh-115px)] rounded-3xl">
-      <div className="flex-grow bg-gray-100 dark:bg-gray-800 overflow-y-auto p-4">
+    <div className="container mx-auto flex flex-col bg-gray-200 dark:bg-gray-950 h-[calc(100vh-100px)]">
+      <div className="flex-grow p-4 bg-gray-100 dark:bg-gray-800 overflow-y-auto chat-container rounded-xl">
         <AnimatePresence>
           {messages &&
             messages.map((message) => (
