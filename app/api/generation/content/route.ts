@@ -1,10 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { query } from "@/lib/database/db";
-import {
-  GoogleGenerativeAI,
-  HarmBlockThreshold,
-  HarmCategory,
-} from "@google/generative-ai";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
 interface MessageHistory {
   role: string;
@@ -12,6 +8,24 @@ interface MessageHistory {
 }
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY as string);
+
+export async function POST(request: NextRequest) {
+  const { lessonId } = await request.json();
+  if (!lessonId)
+    return NextResponse.json({ error: "No lesson id found!" }, { status: 500 });
+
+  const lesson = await query(`SELECT * FROM "Lesson" WHERE lesson_id = $1`, [
+    lessonId,
+  ]);
+
+  if (lesson.rows.length === 0) {
+    return NextResponse.json({ error: "Lesson not found!" }, { status: 404 });
+  }
+
+  const content = await generateLessonFromLLM(lesson.rows[0].title);
+
+  return NextResponse.json({ message: content }, { status: 201 });
+}
 
 export async function generateLessonFromLLM(lesson: string) {
   const model = genAI.getGenerativeModel({ model: "gemini-pro" });
@@ -47,28 +61,10 @@ export async function generateLessonFromLLM(lesson: string) {
       return parsedContent;
     } catch (error) {
       console.warn("Response is not valid JSON. Returning raw text.");
-      return { content: text };  // Fallback to plain text
+      return { content: text }; // Fallback to plain text
     }
   } catch (error) {
     console.error("Error generating lesson from LLM:", error);
     throw new Error("Failed to generate lesson content");
   }
-}
-
-export async function POST(request: NextRequest) {
-  const { lessonId } = await request.json();
-  if (!lessonId)
-    return NextResponse.json({ error: "No lesson id found!" }, { status: 500 });
-
-  const lesson = await query(`SELECT * FROM "Lesson" WHERE lesson_id = $1`, [
-    lessonId,
-  ]);
-
-  if (lesson.rows.length === 0) {
-    return NextResponse.json({ error: "Lesson not found!" }, { status: 404 });
-  }
-
-  const content = await generateLessonFromLLM(lesson.rows[0].title);
-
-  return NextResponse.json({ message: content }, { status: 201 });
 }
