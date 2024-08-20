@@ -3,12 +3,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import multer from 'multer';
 import path from 'path';
 
-export const config = {
-  api: {
-    bodyParser: false, // Disable Next.js body parsing so we can handle it ourselves
-  },
-};
-
 // Configure multer for file storage with date-based naming
 const storage = multer.diskStorage({
   destination: './public/uploads',

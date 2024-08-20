@@ -3,12 +3,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { uploadMiddleware, runMiddleware } from "@/lib/middleware";
 import { query } from "@/lib/database/db";
 
-export const config = {
-  api: {
-    bodyParser: false, // Disable default body parsing
-  },
-};
-
 export async function POST(request: NextRequest) {
   try {
     const response = new NextResponse();
