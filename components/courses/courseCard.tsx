@@ -56,7 +56,7 @@ export function CourseCard({
             className="flex justify-end gap-1 items-center w-full text-gray-500 hover:text-blue-600 hover:gap-2 duration-300"
           >
             <ArrowUpRight />
-            <Link href={`/quiz/${id}`}>اجراء اختبار</Link>
+            <Link href={`/my-courses/${id}/quiz`}>اجراء اختبار</Link>
           </Button>
         )}
       </CardFooter>

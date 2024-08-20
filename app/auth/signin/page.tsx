@@ -22,6 +22,7 @@ import {
   CardContent,
   CardFooter,
 } from "@/components/ui/card";
+import { useToast } from "@/components/ui/use-toast";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
@@ -33,6 +34,7 @@ const loginSchema = z.object({
 type LoginFormValues = z.infer<typeof loginSchema>;
 
 export default function LoginForm() {
+  const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
@@ -55,9 +57,12 @@ export default function LoginForm() {
 
       if (result?.error) {
         console.error("Login Failed:", result.error);
-        // Handle error (e.g., show error message)
+        toast({
+          title: "فشل تسجيل الدخول",
+          description: "برجاء التأكد من صحة البيانات",
+        });
       } else {
-        router.push("/dashboard");
+        router.push("/");
       }
     } catch (error) {
       console.error("Login Failed:", error);
@@ -121,7 +126,7 @@ export default function LoginForm() {
                 disabled={isLoading}
                 onClick={() => signIn("google", { redirectTo: "/" })}
               >
-                Login with Google
+                تسجيل الدخول باستخدام Google
                 <span className="mr-2 text-2xl">
                   <FcGoogle />
                 </span>
@@ -132,7 +137,7 @@ export default function LoginForm() {
         <CardFooter className="text-center">
           <p>
             ليس لديك حساب؟
-            <a href="/auth/signup" className="text-blue-600 hover:underline">
+            <a href="/auth/signup" className="text-blue-600 mr-2 hover:underline">
               إنشاء حساب
             </a>
           </p>

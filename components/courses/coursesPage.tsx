@@ -54,6 +54,15 @@ export default function CoursesPage({
     );
   }
 
+  if (courses.length === 0) {
+    return (
+      <div className="h-[calc(100vh-100px)] bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800 flex flex-col justify-center items-center  rounded-xl">
+        انت لم تشترك في اي دورة تعليمية بعد
+        
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800 rounded-xl">
       <div className="container mx-auto p-8">

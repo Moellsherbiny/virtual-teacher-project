@@ -47,7 +47,7 @@ export const authOptions: AuthOptions = {
             return null;
           }
 
-          const isCorrectPass = await compare(password, user.password);
+          const isCorrectPass = await compare(password, user.hashed_password);
           console.log("Password correct:", isCorrectPass);
 
           if (!isCorrectPass) {

@@ -10,21 +10,18 @@ import Loader from "@/components/common/Loader";
 import axiosInstance from "@/lib/apiHandler";
 import { renderMessageContent } from "@/components/ai-message-format/messageFormater";
 
-
 type Message = {
   id: number;
   content: string;
   sender: "student" | "ai";
 };
 
-
-
 export default function ChatPage() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoadMsg, setIsLoadMsg] = useState<boolean>(true);
   const [inputMessage, setInputMessage] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
-
   const session = useSession();
   const userId = session.data?.user.id as string;
 
@@ -55,6 +52,7 @@ export default function ChatPage() {
           `/chat/messages?userId=${userId}`
         );
         setMessages(response.data.messages);
+        setIsLoadMsg(false);
       } catch (error) {
         console.error("Error fetching messages:", error);
       }
@@ -108,47 +106,13 @@ export default function ChatPage() {
     }
   };
 
-  // const renderMessageContent = (content: string) => {
-  //   const codeBlockRegex = /```(\w+)?\n([\s\S]+?)\n```/g;
-  //   const parts = [];
-  //   let lastIndex = 0;
-  //   let match;
-
-  //   while ((match = codeBlockRegex.exec(content)) !== null) {
-  //     // Add text before code block
-  //     if (match.index > lastIndex) {
-  //       parts.push(
-  //         <Markdown key={lastIndex} remarkPlugins={[remarkGfm]}>
-  //           {content.slice(lastIndex, match.index)}
-  //         </Markdown>
-  //       );
-  //     }
-
-  //     // Add code block
-  //     const [, language, code] = match;
-  //     parts.push(
-  //       <CodeBlock
-  //         key={match.index}
-  //         language={language || "javascript"}
-  //         value={code.trim()}
-  //       />
-  //     );
-
-  //     lastIndex = match.index + match[0].length;
-  //   }
-
-  //   // Add remaining text after last code block
-  //   if (lastIndex < content.length) {
-  //     parts.push(
-  //       <Markdown key={lastIndex} remarkPlugins={[remarkGfm]}>
-  //         {content.slice(lastIndex)}
-  //       </Markdown>
-  //     );
-  //   }
-
-  //   return parts;
-  // };
-
+  if (isLoadMsg) {
+    return (
+      <div className="flex justify-center items-center h-[calc(100vh-100px)]">
+        <Loader />
+      </div>
+    );
+  }
   return (
     <div className="container mx-auto flex flex-col bg-gray-200 dark:bg-gray-950 h-[calc(100vh-100px)]">
       <div className="flex-grow p-4 bg-gray-100 dark:bg-gray-800 overflow-y-auto chat-container rounded-xl">
