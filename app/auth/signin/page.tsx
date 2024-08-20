@@ -25,6 +25,9 @@ import {
 import { useToast } from "@/components/ui/use-toast";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { AxiosError } from "axios";
+import { ToastAction } from "@/components/ui/toast";
 
 const loginSchema = z.object({
   email: z.string().email("البريد الإلكتروني غير صالح"),
@@ -60,20 +63,34 @@ export default function LoginForm() {
         toast({
           title: "فشل تسجيل الدخول",
           description: "برجاء التأكد من صحة البيانات",
+          action: (
+            <ToastAction altText="المحاولة مجددا">المحاولة مجددا</ToastAction>
+          ),
         });
       } else {
         router.push("/");
       }
     } catch (error) {
       console.error("Login Failed:", error);
-      // Handle error (e.g., show error message)
+      const errorMsg =
+        error instanceof AxiosError
+          ? "هذا المستخدم غير موجود"
+          : "برجاء التأكد من صحة بياناتك ثم قم بالمحاولة مرة اخري";
+      toast({
+        title: "فشل تسجيل الدخول",
+        description: errorMsg,
+        variant: "destructive",
+        action: (
+          <ToastAction altText="المحاولة مجددا">المحاولة مجددا</ToastAction>
+        ),
+      });
     } finally {
       setIsLoading(false);
     }
   }
 
   return (
-    <div className="flex items-center justify-center ">
+    <div className="flex items-center justify-center my-3">
       <Card className="w-full max-w-md">
         <CardHeader>
           <CardTitle className="text-2xl font-bold text-center">
@@ -137,9 +154,12 @@ export default function LoginForm() {
         <CardFooter className="text-center">
           <p>
             ليس لديك حساب؟
-            <a href="/auth/signup" className="text-blue-600 mr-2 hover:underline">
+            <Link
+              href="/auth/signup"
+              className="text-blue-600 mr-2 hover:underline"
+            >
               إنشاء حساب
-            </a>
+            </Link>
           </p>
         </CardFooter>
       </Card>

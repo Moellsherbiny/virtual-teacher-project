@@ -12,8 +12,9 @@ export async function POST(request: NextRequest) {
         { status: 500 }
       );
 
+    const userEmail = email.toLowerCase()
     const isExists = await query(`SELECT * FROM users WHERE email = $1`, [
-      email,
+      userEmail,
     ]);
 
     if (isExists.rows.length > 0) {

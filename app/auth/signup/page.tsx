@@ -25,8 +25,10 @@ import {
 } from "@/components/ui/card";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import axios from "axios";
+import { useToast } from "@/components/ui/use-toast";
 import axiosInstance from "@/lib/apiHandler";
+import Link from "next/link";
+import { AxiosError } from "axios";
 
 const signupSchema = z
   .object({
@@ -43,6 +45,7 @@ const signupSchema = z
 type SignupFormValues = z.infer<typeof signupSchema>;
 
 export default function SignupForm() {
+  const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
@@ -64,36 +67,39 @@ export default function SignupForm() {
         password: data.password,
         name: data.name,
       });
-      if (response.status === 201) router.push("/auth/signin");
-      else console.log("error");
-
-      // Here you would typically call your API to create the user
-      // For example:
-      // const response = await fetch('/api/auth/signup', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(data),
-      // });
-      //
-      // if (response.ok) {
-      //   router.push('/auth/login');
-      // } else {
-      //   throw new Error('Signup failed');
-      // }
-
-      // For now, we'll just simulate a successful signup
+      if (response.status === 201) {
+        router.push("/auth/signin");
+        toast({
+          title: "تم بنجاح",
+          description: "تم تسجيل بياناتك بنجاح قم بتسجيل الدخول لكي تتمتع بكامل المزايا",
+        });
+      } else {
+        toast({
+          title: "فشل تسجيل بياناتك",
+          description: "هذا المسنخدم موجود بالفعل",
+        });
+        console.log("error");
+      }
       console.log("Signup data:", data);
-      router.push("/auth/login");
+      router.push("/auth/signin");
     } catch (error) {
       console.error("Signup Failed:", error);
-      // Handle error (e.g., show error message)
+      const errorMsg =
+        error instanceof AxiosError
+          ? error.response?.status === 409 && "هذا المستخدم موجود بالفعل"
+          : "برجاء التأكد من صحة بياناتك ثم قم بالمحاولة مرة اخري";
+      toast({
+        title: "فشل تسجيل بياناتك",
+        description: errorMsg,
+        variant: "destructive",
+      });
     } finally {
       setIsLoading(false);
     }
   }
 
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center justify-center my-6">
       <Card className="w-full max-w-md">
         <CardHeader>
           <CardTitle className="text-2xl font-bold text-center">
@@ -187,9 +193,12 @@ export default function SignupForm() {
         <CardFooter className="text-center">
           <p>
             لديك حساب بالفعل؟
-            <a href="/auth/signin" className="text-blue-600 mr-2 hover:underline">
+            <Link
+              href="/auth/signin"
+              className="text-blue-600 mr-2 hover:underline"
+            >
               تسجيل الدخول
-            </a>
+            </Link>
           </p>
         </CardFooter>
       </Card>
