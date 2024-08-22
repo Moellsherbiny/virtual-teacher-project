@@ -2,8 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { query } from "@/lib/database/db";
 import {generateLessonFromLLM} from "@/lib/generations/content"
 
-
-
 export async function POST(request: NextRequest) {
   const { lessonId } = await request.json();
   if (!lessonId)

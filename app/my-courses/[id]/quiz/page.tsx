@@ -14,9 +14,9 @@ import {
 } from "@/components/ui/dialog";
 import axiosInstance from "@/lib/apiHandler";
 import { ArrowRight } from "lucide-react";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
-
 
 type Question = {
   text: string;
@@ -71,16 +71,19 @@ export default function QuizPage({ params }: { params: { id: string } }) {
   const [showResults, setShowResults] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [quizTitle, setQuizTitle] = useState<string>();
 
-  
+  const session = useSession();
+
   useEffect(() => {
     const fetchQuizData = async () => {
       try {
         const response = await axiosInstance.post("/generation/quiz", {
           id: params.id,
-        }); 
+        });
         const data = await response.data;
         setQuizData(data.quiz);
+        setQuizTitle(data.quizTitle);
         setSelectedAnswers(new Array(data.quiz.questions.length).fill(""));
         setIsLoading(false);
       } catch (err) {
@@ -98,10 +101,17 @@ export default function QuizPage({ params }: { params: { id: string } }) {
     newAnswers[index] = answer;
     setSelectedAnswers(newAnswers);
   };
-
-  // Handle quiz submission
-  const handleSubmit = () => {
+  console.log(quizTitle);
+  
+  const handleSubmit = async () => {
     setShowResults(true);
+    const response = await axiosInstance.post(`/generation/quiz/submit`, {
+      userId: session.data?.user.id,
+      generatedQuiz: quizData,
+      selectedAnswers,
+      quizTitle
+    });
+    console.log(response.data);
   };
 
   if (isLoading) {
@@ -127,13 +137,13 @@ export default function QuizPage({ params }: { params: { id: string } }) {
   return (
     <div className="min-h-screen bg-gradient-to-bl from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800">
       <div className="container mx-auto p-8 " dir="rtl">
-      <Button variant="ghost" asChild className="mb-6 hover:text-red-600">
-          <Link href='/my-courses/'>
+        <Button variant="ghost" asChild className="mb-6 hover:text-red-600">
+          <Link href="/my-courses/">
             <ArrowRight className="ml-2  h-4 w-4" /> الخروج
           </Link>
         </Button>
         <h1 className="text-3xl font-extrabold tracking-tight mb-8 text-blue-600">
-          اختبار
+        اختبار  {quizTitle} 
         </h1>
 
         {quizData.questions.map((question, index) => (

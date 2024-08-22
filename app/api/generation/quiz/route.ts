@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
     //   [JSON.stringify(quiz), userId]
     // );
 
-    return NextResponse.json({ quiz });
+    return NextResponse.json({ quiz , quizTitle:courseTitle.rows[0].title});
   } catch (error) {
     console.error(error);
     return NextResponse.json(

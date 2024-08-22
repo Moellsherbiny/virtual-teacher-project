@@ -3,11 +3,23 @@
 import { useSession } from "next-auth/react";
 import { useState, useEffect } from "react";
 import axiosInstance from "@/lib/apiHandler";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 interface Feedback {
+  id: number;
+  quiz: string;
   result: string;
+  score: number;
+  userId: string;
 }
 
 const FeedbackPage = ({
@@ -24,10 +36,8 @@ const FeedbackPage = ({
     const fetchFeedbacks = async () => {
       try {
         if (!userId) return;
-        const response = await axiosInstance.get<{ results: Feedback[] }>(
-          `/feedback?userId=${userId}`
-        );
-        const data = response.data.results;
+        const response = await axiosInstance.get(`/feedbacks?userId=${userId}`);
+        const data = response.data.feedbacks;
         console.log(data);
         setFeedbacks(data);
       } catch (error) {
@@ -52,23 +62,29 @@ const FeedbackPage = ({
 
   return (
     <div className="container mx-auto p-4 space-y-4 rtl">
-      <h1 className="text-4xl font-bold text-right mb-6 bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">
-        نتائج الاختبار
-      </h1>
-      {feedbacks.map((feedback, id) => (
-        <Card key={id} className="shadow-lg">
-          <CardHeader>
-            <CardTitle className="text-right text-2xl bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
-              الاختبار {id + 1}
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-right text-lg font-medium bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 bg-clip-text text-transparent">
-              {feedback.result}
-            </p>
-          </CardContent>
-        </Card>
-      ))}
+      <Table dir="rtl" className="text-right">
+        <TableCaption>نتائج الاختبارات التي اجريتها</TableCaption>
+        <TableHeader dir="rtl" className="text-right">
+          <TableRow>
+            <TableHead className="text-right">#</TableHead>
+            <TableHead className="text-right">اختبار</TableHead>
+            <TableHead className="text-right">الدرجات</TableHead>
+            <TableHead className="text-right">النتيجة</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {feedbacks.map((feedback, index) => {
+            return (
+              <TableRow key={index}>
+                <TableCell className="font-medium">{index + 1}</TableCell>
+                <TableCell>{feedback.quiz}</TableCell>
+                <TableCell>{feedback.score}</TableCell>
+                <TableCell>{feedback.result}</TableCell>
+              </TableRow>
+            );
+          })}
+        </TableBody>
+      </Table>
     </div>
   );
 };
