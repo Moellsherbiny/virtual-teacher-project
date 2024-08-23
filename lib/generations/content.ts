@@ -2,7 +2,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY as string);
 
 export async function generateLessonFromLLM(lesson: string) {
-  const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
   const prompt = `${lesson}
       بناءً على عنوان الدرس أعلاه، قم بإنشاء شرح شامل ومهني للدرس.
