@@ -23,10 +23,8 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY as string);
 // ];
 
 const generationConfig = {
-  temperature: 1.65,
-  top_p: 0.95,
-  top_k: 64,
-  max_output_tokens: 8192,
+  temperature: 1,
+  maxOutPutTokens: 100,
   response_mime_type: "text/plain",
 };
 export async function POST(request: NextRequest) {
@@ -39,8 +37,11 @@ export async function POST(request: NextRequest) {
 
   const model = genAI.getGenerativeModel({
     model: "gemini-1.5-flash",
-    generationConfig,
-    // safetySettings,
+    generationConfig: {
+      temperature: 1,
+      maxOutputTokens: 100,
+      responseMimeType: "text/plain",
+    },
   });
 
   const messagesResult = await query(
