@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <>
-      <html lang="en" suppressHydrationWarning>
+      <html lang="ar" suppressHydrationWarning>
         <head />
         <body dir="rtl" suppressHydrationWarning>
           <ThemeProvider

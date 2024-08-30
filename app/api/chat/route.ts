@@ -11,19 +11,19 @@ interface MessageHistory {
   parts: { text: string }[];
 }
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY as string);
-const safetySettings = [
-  {
-    category: HarmCategory.HARM_CATEGORY_HARASSMENT,
-    threshold: HarmBlockThreshold.BLOCK_LOW_AND_ABOVE,
-  },
-  {
-    category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-    threshold: HarmBlockThreshold.BLOCK_LOW_AND_ABOVE,
-  },
-];
+// const safetySettings = [
+//   {
+//     category: HarmCategory.HARM_CATEGORY_HARASSMENT,
+//     threshold: HarmBlockThreshold.BLOCK_LOW_AND_ABOVE,
+//   },
+//   {
+//     category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+//     threshold: HarmBlockThreshold.BLOCK_LOW_AND_ABOVE,
+//   },
+// ];
 
 const generationConfig = {
-  temperature: 1.75,
+  temperature: 1.65,
   top_p: 0.95,
   top_k: 64,
   max_output_tokens: 8192,
@@ -40,7 +40,7 @@ export async function POST(request: NextRequest) {
   const model = genAI.getGenerativeModel({
     model: "gemini-1.5-flash",
     generationConfig,
-    safetySettings,
+    // safetySettings,
   });
 
   const messagesResult = await query(

@@ -23,13 +23,13 @@ const cleanTextForSpeech = (text: string): string => {
 };
 
 export const speakMessage = (text: string) => {
-  const cleanedText = cleanTextForSpeech(text); // Clean the text
-  if (cleanedText.length === 0) return; // Skip if there's nothing to say
+  const cleanedText = cleanTextForSpeech(text); 
+  if (cleanedText.length === 0) return;
 
-  const language = detectLanguage(cleanedText); // Detect the language
-  const speech = new SpeechSynthesisUtterance(cleanedText); // Use the cleaned text
-  speech.lang = language; // Set the language
-  speech.pitch = 1; // Adjust pitch if needed
-  speech.rate = 1; // Adjust the speed of speech if needed
+  const language = detectLanguage(cleanedText);
+  const speech = new SpeechSynthesisUtterance(cleanedText); 
+  speech.lang = language; 
+  speech.pitch = 1; 
+  speech.rate = .7; 
   window.speechSynthesis.speak(speech);
 };

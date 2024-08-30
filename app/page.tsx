@@ -32,7 +32,7 @@ const itemVariants = {
 
 export default function Home() {
   return (
-    <div dir="rtl" className="container mx-auto px-4 py-8">
+    <div dir="rtl" className="container mx-auto py-8 ">
       <motion.main
         className="space-y-10"
         variants={containerVariants}
@@ -40,15 +40,15 @@ export default function Home() {
         animate="visible"
       >
         <motion.section
-          className="text-center bg-gradient-to-tr from-blue-600 to-blue-300  rounded-xl py-4"
+          className="text-center bg-gradient-to-tr from-blue-600 to-blue-300  rounded-xl px-2 py-4"
           variants={itemVariants}
         >
           <h1 className="scroll-m-20 text-white text-xl font-extrabold tracking-tight lg:text-2xl mb-2">
             مرحبًا بك أنا روبوتك التعليمي الافتراضي
           </h1>
-          <p className="text-xl text-white text-muted-foreground mb-4">
-            اكتشف طريقة جديدة للتعلم من خلال روبوتك التعليمي الافتراضي المدعوم بالذكاء
-            الاصطناعي
+          <p className="text-sm md:text-xl text-white text-muted-foreground mb-4">
+            اكتشف طريقة جديدة للتعلم من خلال روبوتك التعليمي الافتراضي المدعوم
+            بالذكاء الاصطناعي
           </p>
           <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.95 }}>
             <Link href="/chat">

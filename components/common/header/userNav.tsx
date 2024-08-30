@@ -65,7 +65,7 @@ export default function Header({ user }: User) {
 
       {/* Mobile navigation */}
       {isMenuOpen && (
-        <nav className="mt-4 flex flex-col space-y-4 md:hidden">
+        <nav className="mt-4 flex flex-col space-y-4 px-8 md:hidden">
           <ModeToggle />
           <Link href="/chat">
             <Button variant="ghost" type="button" onClick={toggleMenu} className="w-full">
@@ -94,7 +94,7 @@ export default function Header({ user }: User) {
           </Link>
           <Button
             variant="destructive"
-            className="w-full"
+            className="mx-auto w-fit"
             onClick={() => signOut()}
           >
             تسجيل الخروج

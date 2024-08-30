@@ -152,15 +152,6 @@ export default function ChatPage() {
                     </AvatarFallback>
                   </Avatar>
 
-                  {/* {message.sender === "ai" && (
-                    <Avatar>
-                      <AvatarImage
-                        src="/images/robot-icon-smile.png"
-                        alt="non"
-                      />
-
-                    </Avatar>
-                  )} */}
                   <div
                     dir="auto"
                     className={`mx-2 p-3 text-sm rounded-lg ${
