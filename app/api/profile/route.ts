@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
 
     const result = await query(updateQuery, values);
 
-    if (result.rowCount === 0) {
+    if (result.rows.length === 0) {
       return NextResponse.json(
         { success: false, message: "User not found" },
         { status: 404 }

@@ -44,10 +44,10 @@ export default function Home() {
           variants={itemVariants}
         >
           <h1 className="scroll-m-20 text-white text-xl font-extrabold tracking-tight lg:text-2xl mb-2">
-            مرحبًا بك أنا معلمك الافتراضي
+            مرحبًا بك أنا روبوتك التعليمي الافتراضي
           </h1>
           <p className="text-xl text-white text-muted-foreground mb-4">
-            اكتشف طريقة جديدة للتعلم مع معلمك الافتراضي المدعوم بالذكاء
+            اكتشف طريقة جديدة للتعلم من خلال روبوتك التعليمي الافتراضي المدعوم بالذكاء
             الاصطناعي
           </p>
           <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.95 }}>
