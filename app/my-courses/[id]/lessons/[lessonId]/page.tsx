@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import axiosInstance from "@/lib/apiHandler";
 import Loader from "@/components/common/Loader";
 import { renderMessageContent } from "@/components/ai-message-format/messageFormater";
+import { speakMessage } from "@/lib/generations/text-to-speech";
 
 const fetchAIContent = async (lessonId: string) => {
   try {
@@ -38,6 +39,9 @@ export default function LessonPage({
         const aiContent = await fetchAIContent(params.lessonId);
         if (aiContent) {
           setContent(aiContent.content);
+          speakMessage(
+            "hello my student start study now your content are available"
+          );
           setError(null);
         } else {
           setError("لم يتم العثور على محتوى للدرس.");

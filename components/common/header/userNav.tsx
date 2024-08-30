@@ -22,9 +22,9 @@ export default function Header({ user }: User) {
       <div className="container mx-auto flex items-center justify-between">
         <Link href="/" className="flex">
           <span className="text-lg font-black bg-clip-text text-transparent bg-gradient-to-br from-blue-600 to-blue-300">
-            المعــلــــم
+          الروبوت التعليمي
             <br />
-            الافتراضي
+            الافـــــــتراضــــــــي
           </span>
         </Link>
 

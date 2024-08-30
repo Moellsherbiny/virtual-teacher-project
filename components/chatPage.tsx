@@ -9,7 +9,7 @@ import { AvatarImage } from "@radix-ui/react-avatar";
 import Loader from "@/components/common/Loader";
 import axiosInstance from "@/lib/apiHandler";
 import { renderMessageContent } from "@/components/ai-message-format/messageFormater";
-
+import { speakMessage } from "@/lib/generations/text-to-speech";
 type Message = {
   id: number;
   content: string;
@@ -97,6 +97,8 @@ export default function ChatPage() {
         });
 
         setMessages((prev) => [...prev, aiResponse]);
+
+        speakMessage(aiResponse.content);
       } catch (error) {
         console.error("Error fetching AI response:", error);
         // Handle error (e.g., show error message to user)
@@ -136,18 +138,29 @@ export default function ChatPage() {
                       : "flex-row-reverse"
                   }`}
                 >
-                  <Avatar className=" bg-slate-200 dark:bg-gray-600">
-                    {message.sender === "student" &&
-                      session.status === "authenticated" && (
-                        <AvatarImage
-                          src={session.data?.user.image as string}
-                          alt="non"
-                        />
-                      )}
+                  <Avatar>
+                    <AvatarImage
+                      src={
+                        message.sender === "student"
+                          ? (session.data?.user.image as string)
+                          : "/images/robot-icon-smile.png"
+                      }
+                      alt="avatar"
+                    />
                     <AvatarFallback>
-                      {message.sender === "student" ? "أنت" : "AI"}
+                      {message.sender === "student" ? "أنت" : "Ai"}
                     </AvatarFallback>
                   </Avatar>
+
+                  {/* {message.sender === "ai" && (
+                    <Avatar>
+                      <AvatarImage
+                        src="/images/robot-icon-smile.png"
+                        alt="non"
+                      />
+
+                    </Avatar>
+                  )} */}
                   <div
                     dir="auto"
                     className={`mx-2 p-3 text-sm rounded-lg ${
