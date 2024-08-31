@@ -11,7 +11,7 @@ const CodeBlock = ({
   value: string;
 }) => {
   return (
-    <div dir="ltr" className="text-left code-block-wrapper">
+    <div dir="ltr" className="code-block-wrapper">
       <SyntaxHighlighter
         language={language}
         style={dracula}
@@ -22,9 +22,7 @@ const CodeBlock = ({
           direction: "ltr",
         }}
       >
-
         {value}
-      
       </SyntaxHighlighter>
     </div>
   );
@@ -40,13 +38,15 @@ export const renderMessageContent = (content: string) => {
     // Add text before code block
     if (match.index > lastIndex) {
       parts.push(
-        <Markdown
-          key={lastIndex}
-          className="leading-8"
-          remarkPlugins={[remarkGfm]}
-        >
-          {content.slice(lastIndex, match.index)}
-        </Markdown>
+        <div dir="auto" className="text-center">
+          <Markdown
+            key={lastIndex}
+            className="justify-self-auto"
+            remarkPlugins={[remarkGfm]}
+          >
+            {content.slice(lastIndex, match.index)}
+          </Markdown>
+        </div>
       );
     }
 

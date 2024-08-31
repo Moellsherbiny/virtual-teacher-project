@@ -10,6 +10,8 @@ import Loader from "@/components/common/Loader";
 import axiosInstance from "@/lib/apiHandler";
 import { renderMessageContent } from "@/components/ai-message-format/messageFormater";
 import { speakMessage } from "@/lib/generations/text-to-speech";
+import { Volume2, VolumeX } from "lucide-react"; // Import icons for voice buttons
+
 type Message = {
   id: number;
   content: string;
@@ -21,6 +23,7 @@ export default function ChatPage() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isLoadMsg, setIsLoadMsg] = useState<boolean>(true);
   const [inputMessage, setInputMessage] = useState("");
+  const [playingMessageId, setPlayingMessageId] = useState<number | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const session = useSession();
   const userId = session.data?.user.id as string;
@@ -37,9 +40,9 @@ export default function ChatPage() {
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
+
   useEffect(() => {
     if (session.status === "authenticated" && userId) fetchMessages();
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [session.status, userId]);
 
@@ -47,7 +50,6 @@ export default function ChatPage() {
     if (userId) {
       try {
         console.log(session.status);
-
         const response = await axiosInstance.get(
           `/chat/messages?userId=${userId}`
         );
@@ -97,14 +99,23 @@ export default function ChatPage() {
         });
 
         setMessages((prev) => [...prev, aiResponse]);
-
-        speakMessage(aiResponse.content);
       } catch (error) {
         console.error("Error fetching AI response:", error);
         // Handle error (e.g., show error message to user)
       } finally {
         setIsLoading(false);
       }
+    }
+  };
+
+  const handleVoiceToggle = (messageId: number, content: string) => {
+    if (playingMessageId === messageId) {
+      window.speechSynthesis.cancel();
+      setPlayingMessageId(null);
+    } else {
+      window.speechSynthesis.cancel();
+      speakMessage(content);
+      setPlayingMessageId(messageId);
     }
   };
 
@@ -115,6 +126,7 @@ export default function ChatPage() {
       </div>
     );
   }
+
   return (
     <div className="container mx-auto flex flex-col bg-gray-200 dark:bg-gray-950 h-[calc(100vh-100px)]">
       <div className="flex-grow p-4 bg-gray-100 dark:bg-gray-800 overflow-y-auto chat-container rounded-xl">
@@ -161,6 +173,21 @@ export default function ChatPage() {
                     }`}
                   >
                     {renderMessageContent(message.content)}
+                    {message.sender === "ai" && (
+                      <Button
+                        onClick={() =>
+                          handleVoiceToggle(message.id, message.content)
+                        }
+                        className="ml-2 p-1"
+                        variant="ghost"
+                      >
+                        {playingMessageId === message.id ? (
+                          <VolumeX size={16} />
+                        ) : (
+                          <Volume2 size={16} />
+                        )}
+                      </Button>
+                    )}
                   </div>
                 </div>
               </motion.div>

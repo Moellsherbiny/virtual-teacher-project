@@ -29,24 +29,32 @@ const splitTextByLanguage = (
   text: string
 ): { text: string; lang: "ar" | "en" }[] => {
   const segments: { text: string; lang: "ar" | "en" }[] = [];
+  const words = text.split(/\s+/);
   let currentSegment = "";
   let currentLang: "ar" | "en" | null = null;
 
-  for (const char of text) {
-    const charLang = detectLanguage(char);
+  words.forEach((word, index) => {
+    const wordLang = detectLanguage(word);
 
-    if (charLang !== currentLang && currentSegment) {
-      segments.push({ text: currentSegment, lang: currentLang as "ar" | "en" });
+    if (wordLang !== currentLang && currentSegment) {
+      segments.push({
+        text: currentSegment.trim(),
+        lang: currentLang as "ar" | "en",
+      });
       currentSegment = "";
     }
 
-    currentLang = charLang;
-    currentSegment += char;
-  }
+    currentLang = wordLang;
+    currentSegment += word + " ";
 
-  if (currentSegment) {
-    segments.push({ text: currentSegment, lang: currentLang as "ar" | "en" });
-  }
+    // If it's the last word, add the remaining segment
+    if (index === words.length - 1 && currentSegment) {
+      segments.push({
+        text: currentSegment.trim(),
+        lang: currentLang as "ar" | "en",
+      });
+    }
+  });
 
   return segments;
 };
@@ -62,7 +70,7 @@ export const speakMessage = (text: string) => {
     const speech = new SpeechSynthesisUtterance(segment.text);
     speech.lang = segment.lang;
     speech.pitch = 1;
-    speech.rate = 0.9;
+    speech.rate = 1;
     window.speechSynthesis.speak(speech);
   });
 };
