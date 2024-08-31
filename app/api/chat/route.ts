@@ -10,54 +10,109 @@ interface MessageHistory {
   role: string;
   parts: { text: string }[];
 }
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY as string);
-// const safetySettings = [
-//   {
-//     category: HarmCategory.HARM_CATEGORY_HARASSMENT,
-//     threshold: HarmBlockThreshold.BLOCK_LOW_AND_ABOVE,
-//   },
-//   {
-//     category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-//     threshold: HarmBlockThreshold.BLOCK_LOW_AND_ABOVE,
-//   },
-// ];
+
+// Check if the API key is set
+if (!process.env.GEMINI_API_KEY) {
+  console.error("GEMINI_API_KEY is not set in the environment variables");
+  process.exit(1);
+}
+
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+
+const safetySettings = [
+  {
+    category: HarmCategory.HARM_CATEGORY_HARASSMENT,
+    threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+  },
+  {
+    category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+    threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+  },
+  {
+    category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+    threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+  },
+  {
+    category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
+    threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+  },
+];
 
 const generationConfig = {
-  temperature: 1,
-  maxOutPutTokens: 100,
-  response_mime_type: "text/plain",
+  temperature: 0.9,
+  topK: 65,
+  topP: 0.95,
+  maxOutputTokens: 2000,
 };
+
 export async function POST(request: NextRequest) {
-  const { prompt, userId } = await request.json();
-  if (!prompt)
+  try {
+    const { prompt, userId } = await request.json();
+    if (!prompt || !userId) {
+      return NextResponse.json(
+        { error: "No userId or prompt found!" },
+        { status: 400 }
+      );
+    }
+
+    const model = genAI.getGenerativeModel({
+      model: "gemini-1.5-flash",
+      generationConfig,
+      safetySettings,
+    });
+
+    let messagesResult;
+    try {
+      messagesResult = await query(
+        `SELECT content, sender FROM messages WHERE user_id = $1 ORDER BY id DESC LIMIT 10`,
+        [userId]
+      );
+    } catch (dbError) {
+      console.error("Database error:", dbError);
+      return NextResponse.json({ error: "Database error" }, { status: 500 });
+    }
+
+    let msgHistory: MessageHistory[] = messagesResult.rows
+      .reverse()
+      .map((message) => ({
+        role: message.sender === "student" ? "user" : "model",
+        parts: [{ text: message.content }],
+      }));
+
+    if (msgHistory.length > 6) {
+      msgHistory = msgHistory.slice(-6);
+    }
+    const chatSession = model.startChat({
+      history: msgHistory,
+    });
+
+    let response;
+    try {
+      response = await chatSession.sendMessage(prompt);
+    } catch (apiError) {
+      console.error("Gemini API error:", apiError);
+      return NextResponse.json(
+        { error: "Error communicating with Gemini API" },
+        { status: 500 }
+      );
+    }
+
+    if (!response.response) {
+      return NextResponse.json(
+        { error: "No response from Gemini API" },
+        { status: 500 }
+      );
+    }
+
     return NextResponse.json(
-      { error: "No userId Or prompt found!" },
+      { message: response.response.text() },
+      { status: 201 }
+    );
+  } catch (error) {
+    console.error("Unexpected error in POST function:", error);
+    return NextResponse.json(
+      { error: "Internal Server Error" },
       { status: 500 }
     );
-
-  const model = genAI.getGenerativeModel({
-    model: "gemini-1.5-flash",
-    generationConfig: {
-      temperature: 1,
-      maxOutputTokens: 100,
-      responseMimeType: "text/plain",
-    },
-  });
-
-  const messagesResult = await query(
-    `SELECT content, sender FROM messages WHERE user_id = $1 ORDER BY id ASC`,
-    [userId]
-  );
-
-  const msgHistory: MessageHistory[] = messagesResult.rows.map((message) => ({
-    role: message.sender === "student" ? "user" : "model",
-    parts: [{ text: message.content }],
-  }));
-  const chatSession = model.startChat({
-    history: msgHistory,
-  });
-
-  const { response } = await chatSession.sendMessage(prompt);
-
-  return NextResponse.json({ message: response.text() }, { status: 201 });
+  }
 }
