@@ -74,12 +74,12 @@ export default function ChatPage() {
 
       try {
         // Get AI response
-        const ai = await axiosInstance.post("http://localhost:3000/api/chat", {
+        const ai = await axiosInstance.post("/api/chat", {
           prompt: newMessage.content,
           userId,
         });
         // Store user message
-        await axiosInstance.post("http://localhost:3000/api/chat/messages", {
+        await axiosInstance.post("/api/chat/messages", {
           content: newMessage.content,
           sender: "student",
           userId,
@@ -92,7 +92,7 @@ export default function ChatPage() {
         };
 
         // Store AI message
-        await axiosInstance.post("http://localhost:3000/api/chat/messages", {
+        await axiosInstance.post("/api/chat/messages", {
           content: aiResponse.content,
           sender: "ai",
           userId,
