@@ -55,7 +55,7 @@ export async function POST(request: NextRequest) {
       maxOutputTokens: 2000,
     };
     const model = genAI.getGenerativeModel({
-      model: "gemini-pro",
+      model: "gemini-1.5-flash",
       generationConfig,
       safetySettings,
     });
