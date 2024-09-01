@@ -7,8 +7,8 @@ import {
 } from "@google/generative-ai";
 
 interface MessageHistory {
-  role: string;
-  parts: { text: string }[];
+  role?: string;
+  parts?: { text?: string }[];
 }
 
 // Check if the API key is set
@@ -68,21 +68,10 @@ export async function POST(request: NextRequest) {
       );
     } catch (dbError) {
       console.error("Database error:", dbError);
-      return NextResponse.json({ error: "Database error" }, { status: 500 });
     }
 
-    let msgHistory: MessageHistory[] = messagesResult.rows
-      .reverse()
-      .map((message) => ({
-        role: message.sender === "student" ? "user" : "model",
-        parts: [{ text: message.content }],
-      }));
-
-    if (msgHistory.length > 6) {
-      msgHistory = msgHistory.slice(-6);
-    }
     const chatSession = model.startChat({
-      history: msgHistory,
+      history: [],
     });
 
     let response;

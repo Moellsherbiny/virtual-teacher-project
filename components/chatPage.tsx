@@ -12,6 +12,11 @@ import { renderMessageContent } from "@/components/ai-message-format/messageForm
 import { speakMessage } from "@/lib/generations/text-to-speech";
 import { Volume2, VolumeX } from "lucide-react"; // Import icons for voice buttons
 
+interface MessageHistory {
+  role: string;
+  parts: { text: string }[];
+}
+
 type Message = {
   id: number;
   content: string;
@@ -20,6 +25,7 @@ type Message = {
 
 export default function ChatPage() {
   const [messages, setMessages] = useState<Message[]>([]);
+  const [history, setHistory] = useState<MessageHistory[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isLoadMsg, setIsLoadMsg] = useState<boolean>(true);
   const [inputMessage, setInputMessage] = useState("");
@@ -77,6 +83,7 @@ export default function ChatPage() {
         const ai = await axiosInstance.post("/chat", {
           prompt: newMessage.content,
           userId,
+          history,
         });
         // Store user message
         await axiosInstance.post("/chat/messages", {
