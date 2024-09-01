@@ -74,12 +74,12 @@ export default function ChatPage() {
 
       try {
         // Get AI response
-        const ai = await axiosInstance.post("/api/chat", {
+        const ai = await axiosInstance.post("/chat", {
           prompt: newMessage.content,
           userId,
         });
         // Store user message
-        await axiosInstance.post("/api/chat/messages", {
+        await axiosInstance.post("/chat/messages", {
           content: newMessage.content,
           sender: "student",
           userId,
