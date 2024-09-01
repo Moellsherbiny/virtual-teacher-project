@@ -92,7 +92,7 @@ export default function ChatPage() {
         };
 
         // Store AI message
-        await axiosInstance.post("/api/chat/messages", {
+        await axiosInstance.post("/chat/messages", {
           content: aiResponse.content,
           sender: "ai",
           userId,
