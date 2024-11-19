@@ -38,7 +38,7 @@ export const renderMessageContent = (content: string) => {
     // Add text before code block
     if (match.index > lastIndex) {
       parts.push(
-        <div dir="auto" className="text-center">
+        <div dir="auto" className="">
           <Markdown
             key={lastIndex}
             className="justify-self-auto"

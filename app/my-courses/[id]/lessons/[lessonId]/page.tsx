@@ -82,7 +82,7 @@ export default function LessonPage({
               <div className="prose dark:prose-invert max-w-none">
                 {renderMessageContent(content || "لم يتم العثور على محتوى.")}
                 {isLoadingAI && (
-                  <div className="mt-4 text-center text-gray-500">
+                  <div className="mt-4  text-gray-500">
                     جاري إنشاء المحتوى...
                   </div>
                 )}
