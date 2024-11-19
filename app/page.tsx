@@ -12,6 +12,7 @@ import {
   CardContent,
 } from "@/components/ui/card";
 
+// Variants for animations
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -47,7 +48,7 @@ const robotVariants = {
 
 const Robot = () => (
   <motion.div
-    className="relative w-[150px] h-[150px] rounded-full bg-gradient-to-b from-blue-600 to-blue-300 flex items-center justify-center shadow-lg"
+    className="relative w-[150px] h-[150px] rounded-full bg-gradient-to-b from-blue-600 to-blue-300 dark:bg-black flex items-center justify-center shadow-lg"
     variants={robotVariants}
     animate="hover"
   >
@@ -56,9 +57,7 @@ const Robot = () => (
       animate={{ rotate: [0, -5, 5, 0] }}
       transition={{ duration: 2, repeat: Infinity }}
     >
-      {/* Robot Face */}
       <div className="relative w-[120px] h-[120px] rounded-full bg-blue-500 flex items-center justify-center">
-        {/* Eyes */}
         <motion.div
           className="absolute top-[40%] left-[30%] w-[15px] h-[15px] bg-white rounded-full"
           animate={{ scale: [1, 1.2, 1] }}
@@ -69,7 +68,6 @@ const Robot = () => (
           animate={{ scale: [1, 1.2, 1] }}
           transition={{ duration: 2, repeat: Infinity }}
         />
-        {/* Antenna */}
         <div className="absolute top-[-15px] w-[10px] h-[20px] bg-blue-500"></div>
         <div className="absolute top-[-25px] w-[10px] h-[10px] bg-pink-500 rounded-full"></div>
       </div>
@@ -77,19 +75,18 @@ const Robot = () => (
   </motion.div>
 );
 
-
 export default function Home() {
   return (
-    <div dir="rtl" className="container mx-auto py-8 space-y-10">
+    <div dir="rtl" className="relative container rounded mx-auto py-8 space-y-10 dark:from-blue-100 dark:to-transparent bg-gradient-to-br from-blue-50 to-blue-100 ">
       <motion.main
-        className="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0"
+        className="flex flex-col items-center justify-between space-y-6 md:space-y-0"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
         {/* Robot on the Left */}
         <motion.div
-          className="w-1/3 flex justify-center items-center"
+          className="flex mb-7 justify-center items-center"
           variants={itemVariants}
         >
           <Robot />
@@ -97,20 +94,18 @@ export default function Home() {
 
         {/* Texts on the Right */}
         <motion.section
-          className=" text-right bg-gradient-to-tr from-blue-600 to-blue-300 rounded-xl px-6 py-8"
+          className="w-full text-center bg-gradient-to-tr from-blue-600 to-blue-300 rounded-xl px-6 py-8 shadow-xl"
           variants={itemVariants}
         >
-          
-            <h1 className="scroll-m-20 text-white text-xl font-extrabold tracking-tight lg:text-2xl mb-4">
-              مرحبًا بك أنا روبوتك التعليمي الافتراضي
-            </h1>
-          
-          
-            <p className="text-sm md:text-xl text-white text-muted-foreground mb-6">
-              اكتشف طريقة جديدة للتعلم من خلال روبوتك التعليمي الافتراضي المدعوم
-              بالذكاء الاصطناعي
-            </p>
-          
+          <h1 className="scroll-m-20 text-white text-xl font-extrabold tracking-tight lg:text-2xl mb-4">
+            مرحبًا بك أنا روبوتك التعليمي الافتراضي
+          </h1>
+
+          <p className="text-sm md:text-xl text-white text-muted-foreground mb-6">
+            اكتشف طريقة جديدة للتعلم من خلال روبوتك التعليمي الافتراضي المدعوم
+            بالذكاء الاصطناعي.
+          </p>
+
           <motion.div
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.95 }}
@@ -127,17 +122,47 @@ export default function Home() {
         </motion.section>
       </motion.main>
 
-      {/* New Features Section */}
+      {/* Card Links Section */}
       <motion.section
-        className=" p-6 rounded-lg shadow-md"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-6"
         variants={itemVariants}
       >
-        
-          <h2 className="text-2xl font-bold text-blue-600 mb-4">
-            لماذا تختارنا الروبوت التعليمي الافتراضي؟
-          </h2>
-        
-        <ul className="space-y-3 dark:text-dark">
+        {[
+          { title: "الدردشة مع الروبوت", href: "/chat", icon: "💬" },
+          { title: "الدورات الدراسية", href: "/courses", icon: "📚" },
+          { title: "دوراتي الخاصة", href: "/my-courses", icon: "👩‍🏫" },
+        ].map((card, index) => (
+          <motion.div
+            key={index}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="flex justify-center items-center"
+          >
+            <Card className="w-full max-w-xs shadow-lg hover:shadow-xl transition-all duration-300">
+              <CardHeader className="text-center">
+                <CardTitle className="text-xl font-bold text-blue-600">{card.icon} {card.title}</CardTitle>
+              </CardHeader>
+              <CardContent className="text-center">
+                <Link href={card.href}>
+                  <Button variant="secondary" size="lg" className="w-full">
+                    ابدأ الآن
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+          </motion.div>
+        ))}
+      </motion.section>
+
+      {/* Features Section */}
+      <motion.section
+        className="p-6 rounded-lg shadow-md dark:bg-blue- bg-white"
+        variants={itemVariants}
+      >
+        <h2 className="text-2xl font-bold text-blue-600 mb-4">
+          لماذا تختارنا الروبوت التعليمي الافتراضي؟
+        </h2>
+        <ul className="space-y-3 dark:text-gray-600">
           {[
             "تقنيات ذكاء اصطناعي متقدمة للتعلم الفوري.",
             "إجابات تفاعلية على أسئلتك الأكاديمية.",
@@ -176,9 +201,7 @@ export default function Home() {
         className="bg-gradient-to-br from-blue-100 to-blue-50 p-6 rounded-lg"
         variants={itemVariants}
       >
-        
-          <h2 className="text-xl font-bold text-blue-700 mb-4">كيف يعمل؟</h2>
-        
+        <h2 className="text-xl font-bold text-blue-700 mb-4">كيف يعمل؟</h2>
         <ol className="list-decimal list-inside text-gray-700 space-y-2">
           <motion.li
             initial={{ opacity: 0, x: -20 }}

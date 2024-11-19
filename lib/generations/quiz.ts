@@ -4,7 +4,7 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
 
 export async function generateQuizFromLLM(courseTitle: string) {
   // Validate API key
-  if (!process.env.GEMINI_API_KEY) {
+  if (!process.env.GEMINI_API_KEY2) {
     throw new Error("API key is not defined. Please set GEMINI_API_KEY in your environment variables.");
   }
 
@@ -19,7 +19,7 @@ export async function generateQuizFromLLM(courseTitle: string) {
 
     // Construct the prompt
     const prompt = `
-    Create a JSON quiz with 5 questions in Arabic for the course "${courseTitle}". 
+    Create a JSON quiz with 10 questions in Arabic for the course "${courseTitle}". 
     Questions should include variety (e.g., true/false, multiple-choice). 
     Each question must have four options and a clear correct answer. Use this structure:
     {
