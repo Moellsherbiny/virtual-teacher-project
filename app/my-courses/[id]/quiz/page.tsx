@@ -87,8 +87,8 @@ export default function QuizPage({ params }: { params: { id: string } }) {
         setSelectedAnswers(new Array(data.quiz.questions.length).fill(""));
         setIsLoading(false);
       } catch (err) {
-        setError("Failed to load quiz data.");
-        setIsLoading(false);
+        setError(".");
+        
       }
     };
 
