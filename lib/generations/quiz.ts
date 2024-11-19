@@ -4,7 +4,7 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
 
 export async function generateQuizFromLLM(courseTitle: string) {
   // Validate API key
-  if (!process.env.GEMINI_API_KEY2) {
+  if (!process.env.GEMINI_API_KEY) {
     throw new Error("API key is not defined. Please set GEMINI_API_KEY in your environment variables.");
   }
 
