@@ -129,8 +129,8 @@ export default function QuizPage({ params }: { params: { id: string } }) {
   if (!quizData) {
     return (
       <div className="flex justify-center items-center h-[calc(100vh-100px)]">
-        No quiz data available.
-      </div>
+      <Loader />
+    </div>
     );
   }
 

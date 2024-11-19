@@ -77,10 +77,10 @@ export default function LessonPage({
                 <Loader />
               </div>
             ) : error ? (
-              <div className="text-red-500">{error}</div>
+              <div className="text-green-500">{error}</div>
             ) : (
               <div className="prose dark:prose-invert max-w-none">
-                {renderMessageContent(content || "لم يتم العثور على محتوى.")}
+                {renderMessageContent(content || " جاري إنشاء المحتوى...")}
                 {isLoadingAI && (
                   <div className="mt-4  text-gray-500">
                     جاري إنشاء المحتوى...
