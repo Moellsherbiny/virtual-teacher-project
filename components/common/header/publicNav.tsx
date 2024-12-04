@@ -32,7 +32,7 @@ export default function Header() {
           <ModeToggle />
           <Link href="/about">
             <Button variant="ghost" onClick={toggleMenu}>
-              حول التطبيق
+              من أنا
             </Button>
           </Link>
           <Link href="/auth/signin">

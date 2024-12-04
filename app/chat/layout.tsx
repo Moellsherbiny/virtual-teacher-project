@@ -7,6 +7,7 @@ async function layout({ children }: { children: Readonly<ReactNode> }) {
   if (!session?.user) {
     redirect("/auth/signin");
   }
+  
   return <>{children}</>;
 }
 

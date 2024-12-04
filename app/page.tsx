@@ -160,7 +160,7 @@ export default function Home() {
         variants={itemVariants}
       >
         <h2 className="text-2xl font-bold text-blue-600 mb-4">
-          لماذا تختارنا الروبوت التعليمي الافتراضي؟
+          لماذا تختار الروبوت التعليمي الافتراضي؟
         </h2>
         <ul className="space-y-3 dark:text-gray-600">
           {[
