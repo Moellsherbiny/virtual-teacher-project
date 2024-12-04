@@ -48,7 +48,7 @@ export default function Header() {
 
           <Link href="/about">
             <Button variant="ghost" className="w-full" onClick={toggleMenu}>
-              حول التطبيق
+              من أنا 
             </Button>
           </Link>
           <Link href="/api/auth/signin">
