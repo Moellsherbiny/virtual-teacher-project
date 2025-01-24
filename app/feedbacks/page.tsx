@@ -78,7 +78,7 @@ const FeedbackPage = ({
               <TableRow key={index}>
                 <TableCell className="font-medium">{index + 1}</TableCell>
                 <TableCell>{feedback.quiz}</TableCell>
-                <TableCell><strong>{feedback.score}</strong> <span className="text-muted-foreground font-light">| 5</span></TableCell>
+                <TableCell><strong>{feedback.score}</strong> <span className="text-muted-foreground font-light"> من 10</span></TableCell>
                 <TableCell>{feedback.result}</TableCell>
               </TableRow>
             );

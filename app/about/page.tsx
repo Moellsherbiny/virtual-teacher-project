@@ -1,5 +1,5 @@
 "use client";
-import { useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
 
@@ -48,39 +48,29 @@ const Robot = () => (
 );
 
 export default function About() {
+  const audioRef = useRef<HTMLAudioElement>(null);
+
+
+  const handlePlay = () => {
+    if (audioRef.current) {
+      audioRef.current.play().catch((error) => {
+        console.error("Error playing audio:", error);
+      });
+    }
+  };
+
   useEffect(() => {
-    const playVoice = () => {
-      if ("speechSynthesis" in window) {
-        const synth = window.speechSynthesis;
-        const utterance = new SpeechSynthesisUtterance();
-
-        utterance.text =
-          "Welcome to the Virtual Educational Robot. We are an innovative educational platform that uses artificial intelligence to provide a personalized and interactive learning experience. Our goal is to make education accessible and effective for all students.";
-
-        utterance.lang = "en-US";
-
-        const checkVoices = setInterval(() => {
-          const voices = synth.getVoices();
-          if (voices.length > 0) {
-            clearInterval(checkVoices);
-
-            const englishVoice = voices.find((voice) => voice.lang === "en-US");
-            if (englishVoice) {
-              utterance.voice = englishVoice;
-            }
-            synth.speak(utterance);
-          }
-        }, 100);
-      }
-    };
-
-    playVoice();
+    handlePlay();
   }, []);
-
   return (
-    <div dir="rtl" className="container mx-auto py-12 space-y-12">
+    <div dir="rtl" className="container mx-auto px-4 py-12 space-y-12">
+      <audio ref={audioRef} autoPlay className="hidden">
+        <source src="/audio/info-robot.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+
       <h1 className="scroll-m-20 text-2xl font-extrabold tracking-tight text-center lg:text-5xl text-primary mb-12">
-        من أنا  
+        من أنا
       </h1>
 
       {/* إضافة الروبوت */}
@@ -92,14 +82,12 @@ export default function About() {
         <Card className="shadow-lg rounded-lg overflow-hidden">
           <CardHeader>
             <CardTitle className="text-2xl font-semibold text-muted-foreground">
-              من نحن
+              من أنا
             </CardTitle>
           </CardHeader>
           <CardContent className="p-6">
             <p className="text-lg leading-relaxed dark:text-gray-200">
-              الروبوت الافتراضي هو منصة تعليمية مبتكرة تستخدم تقنيات الذكاء
-              الاصطناعي لتوفير تجربة تعلم شخصية وتفاعلية. هدفنا هو جعل التعليم
-              متاحًا وفعالًا لجميع الطلاب، بغض النظر عن مستواهم أو خلفيتهم.
+              أنا روبوت تعليمي افتراضي استخدم تقنيات الذكاء الاصطناعي لأوفر تجربة تعلم شخصية وتفاعلية. هدفي هو جعل التعليم متاحًا وفعالًا لجميع الطلاب، بغض النظر عن مستوياتهم أو خلفياتهم.
             </p>
           </CardContent>
         </Card>
@@ -113,23 +101,23 @@ export default function About() {
           <CardContent className="p-6">
             <ul className="my-6 mr-6 list-disc text-lg leading-relaxed dark:text-gray-200 space-y-4">
               <li>
-                <span className="font-bold">التحدث مع الروبوت التعليمي:</span> 
+                <span className="font-bold">التحدث مع الروبوت التعليمي: </span>
                 يمكن للطلاب طرح الأسئلة والحصول على إجابات فورية بطريقة تفاعلية.
               </li>
               <li>
-                <span className="font-bold">توفير محتوى تعليمي:</span> 
+                <span className="font-bold">توفير محتوى تعليمي: </span>
                 يتضمن دروسًا وشروحات متكاملة تغطي مجموعة واسعة من المواد الدراسية.
               </li>
               <li>
-                <span className="font-bold">إجراء الاختبارات وتصحيحها:</span> 
+                <span className="font-bold">إجراء الاختبارات وتصحيحها: </span>
                 يوفر النظام اختبارات تفاعلية مع إمكانية تصحيح الإجابات وعرض الأخطاء.
               </li>
               <li>
-                <span className="font-bold">الاشتراك في المحتوى التعليمي:</span> 
+                <span className="font-bold">الاشتراك في المحتوى التعليمي: </span>
                 يمكن للطلاب الاشتراك للحصول على محتوى مميز وشامل.
               </li>
               <li>
-                <span className="font-bold">عرض النتائج:</span> 
+                <span className="font-bold">عرض النتائج: </span>
                 يوفر تقارير تفصيلية عن التقدم الدراسي ومستوى الأداء.
               </li>
             </ul>
@@ -137,40 +125,39 @@ export default function About() {
         </Card>
 
         <Card className="shadow-lg rounded-lg overflow-hidden">
-  <CardHeader>
-    <CardTitle className="text-2xl font-semibold text-muted-foreground">
-      كيف يعمل الروبوت
-    </CardTitle>
-  </CardHeader>
-  <CardContent className="p-6">
-    <p className="text-lg leading-relaxed dark:text-gray-200">
-      يعتمد الروبوت التعليمي الافتراضي على مجموعة من التقنيات المتقدمة لتوفير تجربة تعليمية فريدة. يعمل الروبوت وفق الخطوات التالية:
-    </p>
-    <ol className="my-6 mr-6 list-decimal text-lg leading-relaxed dark:text-gray-200 space-y-4">
-      <li>
-        <span className="font-bold">معالجة المدخلات:</span> 
-        عندما يطرح المستخدم سؤالًا أو يطلب شرحًا، يقوم الروبوت بتحليل النص باستخدام تقنيات معالجة اللغة الطبيعية (NLP).
-      </li>
-      <li>
-        <span className="font-bold">فهم السياق:</span> 
-        يتم تحليل المحتوى لفهم السياق والغرض من السؤال، مثل معرفة المادة الدراسية أو الموضوع المطلوب.
-      </li>
-      <li>
-        <span className="font-bold">البحث عن الإجابة:</span> 
-        يستخدم الروبوت قاعدة بيانات تحتوي على محتوى تعليمي شامل ونماذج ذكاء اصطناعي لإيجاد الإجابة المناسبة.
-      </li>
-      <li>
-        <span className="font-bold">تقديم الإجابة:</span> 
-        يتم تقديم الإجابة بشكل واضح ومبسط عبر النصوص أو الصوت، مع إمكانية تقديم أمثلة أو توضيحات إضافية عند الحاجة.
-      </li>
-      <li>
-        <span className="font-bold">التفاعل المستمر:</span> 
-        يمكن للروبوت متابعة النقاش والإجابة عن أسئلة إضافية بناءً على نفس السياق، مما يعزز تجربة التعلم التفاعلي.
-      </li>
-    </ol>
-  </CardContent>
-</Card>
-
+          <CardHeader>
+            <CardTitle className="text-2xl font-semibold text-muted-foreground">
+              كيف يعمل الروبوت
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="p-6">
+            <p className="text-lg leading-relaxed dark:text-gray-200">
+              يعتمد الروبوت التعليمي الافتراضي على مجموعة من التقنيات المتقدمة لتوفير تجربة تعليمية فريدة. يعمل الروبوت وفق الخطوات التالية:
+            </p>
+            <ol className="my-6 mr-6 list-decimal text-lg leading-relaxed dark:text-gray-200 space-y-4">
+              <li>
+                <span className="font-bold">معالجة المدخلات: </span>
+                عندما يطرح المستخدم سؤالًا أو يطلب شرحًا، يقوم الروبوت بتحليل النص باستخدام تقنيات معالجة اللغة الطبيعية (NLP).
+              </li>
+              <li>
+                <span className="font-bold">فهم السياق: </span>
+                يتم تحليل المحتوى لفهم السياق والغرض من السؤال، مثل معرفة المادة الدراسية أو الموضوع المطلوب.
+              </li>
+              <li>
+                <span className="font-bold">البحث عن الإجابة: </span>
+                يستخدم الروبوت قاعدة بيانات تحتوي على محتوى تعليمي شامل ونماذج ذكاء اصطناعي لإيجاد الإجابة المناسبة.
+              </li>
+              <li>
+                <span className="font-bold">تقديم الإجابة: </span>
+                يتم تقديم الإجابة بشكل واضح ومبسط عبر النصوص أو الصوت، مع إمكانية تقديم أمثلة أو توضيحات إضافية عند الحاجة.
+              </li>
+              <li>
+                <span className="font-bold">التفاعل المستمر: </span>
+                يمكن للروبوت متابعة النقاش والإجابة عن أسئلة إضافية بناءً على نفس السياق، مما يعزز تجربة التعلم التفاعلي.
+              </li>
+            </ol>
+          </CardContent>
+        </Card>
       </main>
     </div>
   );
