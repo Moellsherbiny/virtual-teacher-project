@@ -36,7 +36,7 @@ export default function Header({ user }: User) {
         {/* Desktop navigation */}
         <nav className="hidden md:flex items-center space-x-4 space-x-reverse">
           <Link href="/chat">
-            <Button variant="ghost" type="button" onClick={toggleMenu}>الدردشة مع المعلم</Button>
+            <Button variant="ghost" type="button" onClick={toggleMenu}>الدردشة مع الروبوت المعلم</Button>
           </Link>
           <Link href="/courses">
             <Button variant="ghost" type="button" onClick={toggleMenu} className="w-full">
@@ -69,7 +69,7 @@ export default function Header({ user }: User) {
           <ModeToggle />
           <Link href="/chat">
             <Button variant="ghost" type="button" onClick={toggleMenu} className="w-full">
-              الدردشة مع المعلم
+              الدردشة مع الروبوت المعلم
             </Button>
           </Link>
           <Link href="/courses">
