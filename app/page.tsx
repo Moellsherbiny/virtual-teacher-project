@@ -77,7 +77,7 @@ const Robot = () => (
 
 export default function Home() {
   return (
-    <div dir="rtl" className="relative container rounded mx-auto py-8 space-y-10 dark:from-blue-100 dark:to-transparent bg-gradient-to-br from-blue-50 to-blue-100 ">
+    <div dir="rtl" className="relative container rounded mx-auto py-8 space-y-10 dark:from-blue-950 dark:to-transparent bg-gradient-to-br from-blue-50 to-blue-100 ">
       <motion.main
         className="flex flex-col items-center justify-between space-y-6 md:space-y-0"
         variants={containerVariants}
@@ -156,13 +156,13 @@ export default function Home() {
 
       {/* Features Section */}
       <motion.section
-        className="p-6 rounded-lg shadow-md dark:bg-blue- bg-white"
+        className="p-6 rounded-lg shadow-md dark:bg-blue-950 bg-white"
         variants={itemVariants}
       >
-        <h2 className="text-2xl font-bold text-blue-600 mb-4">
+        <h2 className="text-2xl font-bold dark:text-white text-blue-600 mb-4">
           لماذا تختار الروبوت التعليمي الافتراضي؟
         </h2>
-        <ul className="space-y-3 dark:text-gray-600">
+        <ul className="space-y-3 dark:text-gray-300">
           {[
             "تقنيات ذكاء اصطناعي متقدمة للتعلم الفوري.",
             "إجابات تفاعلية على أسئلتك الأكاديمية.",
@@ -198,11 +198,11 @@ export default function Home() {
 
       {/* How it Works Section */}
       <motion.section
-        className="bg-gradient-to-br from-blue-100 to-blue-50 p-6 rounded-lg"
+        className=" dark:bg-slate-900 p-6 rounded-lg"
         variants={itemVariants}
       >
-        <h2 className="text-xl font-bold text-blue-700 mb-4">كيف يعمل؟</h2>
-        <ol className="list-decimal list-inside text-gray-700 space-y-2">
+        <h2 className="text-xl font-bold dark:text-white text-blue-700 mb-4">كيف يعمل؟</h2>
+        <ol className="list-decimal list-inside dark:text-gray-300 text-gray-700 space-y-2">
           <motion.li
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
