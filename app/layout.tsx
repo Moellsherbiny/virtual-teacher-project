@@ -9,8 +9,8 @@ import Footer from "@/components/common/footer";
 import { Toaster } from "@/components/ui/toaster";
 import { VoiceAssistantProvider } from "@/components/VoiceAssistantProvider";
 import VoiceAssistantButton from "@/components/VoiceAssistantButton";
-import {VoiceAssistantDialog} from "@/components/ai-teacher-dialog";
-// import { AssistantDialog } from "@/components/ai-teacher-dialog";
+import AssistantDialog from "@/components/AssistantDialog";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -41,7 +41,7 @@ export default function RootLayout({
                 <VoiceAssistantProvider>
                   {children}
                   <VoiceAssistantButton />
-                  <VoiceAssistantDialog />
+                  <AssistantDialog />
                 </VoiceAssistantProvider>
                 <Toaster />
                 <Footer />

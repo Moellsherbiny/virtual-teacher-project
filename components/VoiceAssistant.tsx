@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import AssistantIcon from './VoiceAssistantButton'
-import AssistantDialog from './ai-teacher-dialog';
+import AssistantDialog from './AssistantDialog';
 import { Message } from './types';
 
 export default function VoiceAssistant() {

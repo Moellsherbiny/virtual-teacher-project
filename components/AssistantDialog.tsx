@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useVoiceAssistant } from './VoiceAssistantProvider';
 
-export default function VoiceAssistantDialog() {
+export default function AssistantDialog() {
   const { 
     isOpen, 
     isListening, 
