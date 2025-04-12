@@ -7,6 +7,10 @@ import Transition from "./Transition";
 import Navbar from "@/components/common/header/navbar";
 import Footer from "@/components/common/footer";
 import { Toaster } from "@/components/ui/toaster";
+import { VoiceAssistantProvider } from "@/components/VoiceAssistantProvider";
+import {VoiceAssistantButton} from "@/components/VoiceAssistantButton";
+import {VoiceAssistantDialog} from "@/components/ai-teacher-dialog";
+// import { AssistantDialog } from "@/components/ai-teacher-dialog";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -32,10 +36,17 @@ export default function RootLayout({
           >
             <NextAuthProvider>
               <Transition>
+
                 <Navbar />
-                {children}
+                <VoiceAssistantProvider>
+                  {children}
+                  <VoiceAssistantButton />
+                  <VoiceAssistantDialog />
+                </VoiceAssistantProvider>
                 <Toaster />
                 <Footer />
+                
+
               </Transition>
             </NextAuthProvider>
           </ThemeProvider>

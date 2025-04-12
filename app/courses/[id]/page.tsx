@@ -92,13 +92,13 @@ export default function CourseDetails({ params }: { params: { id: string } }) {
     async function fetchCourseDetails() {
       try {
         setIsLoading(true);
-        const res = await axiosInstance.get<{ course: Course[] }>(
-          `/courses/course?courseId=${params.id}`
+        const {data} = await axiosInstance.get<{ course: Course[] }>(
+          `/courses/${params.id}`
         );
-        if (!res.data || !res.data.course || res.data.course.length === 0) {
+        if (!data || !data.course || data.course.length === 0) {
           throw new Error("لم يتم العثور على بيانات الدورة");
         }
-        setCourse(res.data.course[0]);
+        setCourse(data.course[0]);
       } catch (err) {
         setError(
           err instanceof Error
