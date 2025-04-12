@@ -8,7 +8,7 @@ import Navbar from "@/components/common/header/navbar";
 import Footer from "@/components/common/footer";
 import { Toaster } from "@/components/ui/toaster";
 import { VoiceAssistantProvider } from "@/components/VoiceAssistantProvider";
-import {VoiceAssistantButton} from "@/components/VoiceAssistantButton";
+import VoiceAssistantButton from "@/components/VoiceAssistantButton";
 import {VoiceAssistantDialog} from "@/components/ai-teacher-dialog";
 // import { AssistantDialog } from "@/components/ai-teacher-dialog";
 const inter = Inter({ subsets: ["latin"] });

@@ -3,9 +3,8 @@
 import { motion } from 'framer-motion';
 import { useVoiceAssistant } from './VoiceAssistantProvider';
 
-export function VoiceAssistantButton() {
+export default function VoiceAssistantButton() {
   const { isListening, isSpeaking, toggleAssistant } = useVoiceAssistant();
-  
   return (
     <motion.button
       whileHover={{ scale: 1.1 }}
