@@ -1,0 +1,21 @@
+{
+  "brandName":"Virtual Edu Robot",
+  "subtitle": "AI Learning Platform",
+  "mainNavigation":"Main Navigation Menu",
+  "menuButton":"Menu Button",
+  "home":"Home",
+  "dashboard":"Dashboard",
+  "profile":"Profile",
+  "about":"About Us",
+  "contact":"Support",
+  "signin":"Sign In",
+  "signup":"Sign Up",
+  "courses":"Courses",
+  "my_courses":"My Courses",
+  "results":"Results",
+  "getStarted":"Get Started",
+  "login":"Login", 
+  "howItWorks":"How It Works",
+  "features":"Features",
+  "subjects":"Subjects"
+}

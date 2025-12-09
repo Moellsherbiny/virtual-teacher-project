@@ -1,0 +1,295 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum UserRole {
+  STUDENT
+  ADMIN
+  TEACHER
+}
+
+enum QuestionType {
+  TRUE_FALSE
+  MULTIPLE_CHOICE
+  MULTI_SELECT
+  COMPLETE
+  WRITTEN
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+  role          UserRole  @default(STUDENT)
+  isVerified    Boolean   @default(false)
+
+  password     String?
+  otpSecret    String?
+  otpCode      String?
+  otpExpiresAt DateTime?
+
+  Authenticator Authenticator[]
+
+  // Relations
+  courses      Course[]      @relation("InstructorCourses")
+  enrollments  Enrollment[]
+  quizAttempts QuizAttempt[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  chatConversations ChatConversation[]
+}
+
+model Account {
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([provider, providerAccountId])
+}
+
+model Session {
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+
+  @@id([identifier, token])
+}
+
+// Optional for WebAuthn support
+model Authenticator {
+  credentialID         String  @unique
+  userId               String
+  providerAccountId    String
+  credentialPublicKey  String
+  counter              Int
+  credentialDeviceType String
+  credentialBackedUp   Boolean
+  transports           String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([userId, credentialID])
+}
+
+// =====================================
+// ============== COURSE ===============
+// =====================================
+model Course {
+  id          String   @id @default(uuid())
+  title       String
+  description String?
+  imageUrl    String?
+  createdAt   DateTime @default(now())
+  instructorId String
+  instructor   User   @relation("InstructorCourses", fields: [instructorId], references: [id])
+
+  modules     Module[]
+  enrollments Enrollment[]
+  quizzes     Quiz[]
+
+  chatConversations ChatConversation[]
+}
+
+// =====================================
+// ============== MODULE ===============
+// =====================================
+
+model Module {
+  id    String @id @default(uuid())
+  title String
+  order Int
+  courseId String
+  course   Course @relation(fields: [courseId], references: [id])
+
+  lessons Lesson[]
+}
+
+// =====================================
+// =============== LESSON ==============
+// =====================================
+enum LessonType {
+  VIDEO
+  TEXT
+  MATERILAS
+}
+
+model Lesson {
+  id       String  @id @default(uuid())
+  title    String
+  content  String?
+  videoUrl String?
+  fileUrl  String?
+  
+  order    Int
+  type     LessonType @default(VIDEO)
+  moduleId String
+  module   Module @relation(fields: [moduleId], references: [id])
+
+  quizzes Quiz[]
+
+  chatConversations ChatConversation[]
+}
+
+// =====================================
+// ============ ENROLLMENT =============
+// =====================================
+
+model Enrollment {
+  id        String   @id @default(uuid())
+  userId    String
+  courseId  String
+  createdAt DateTime @default(now())
+
+  user   User   @relation(fields: [userId], references: [id])
+  course Course @relation(fields: [courseId], references: [id])
+
+  @@unique([userId, courseId])
+}
+
+// =====================================
+// ================ QUIZ ===============
+// =====================================
+
+model Quiz {
+  id          String   @id @default(uuid())
+  title       String
+  description String?
+  createdAt   DateTime @default(now())
+  courseId String?
+  course   Course? @relation(fields: [courseId], references: [id])
+  lessonId String?
+  lesson   Lesson? @relation(fields: [lessonId], references: [id])
+  questions QuizQuestion[]
+  attempts  QuizAttempt[]
+}
+
+// =====================================
+// ========= QUIZ QUESTIONS ============
+// =====================================
+
+model QuizQuestion {
+  id          String       @id @default(uuid())
+  question    String
+  type        QuestionType
+  maxScore    Float        @default(1)
+  correctText String? // used for COMPLETE or WRITTEN auto-check
+
+  quizId String
+  quiz   Quiz   @relation(fields: [quizId], references: [id])
+
+  answers            QuizAnswer[]
+  quizAttemptAnswers QuizAttemptAnswer[]
+}
+
+// =====================================
+// ============ QUIZ ANSWERS ===========
+// (Used only for MCQ, TRUE/FALSE, MULTI_SELECT)
+// =====================================
+
+model QuizAnswer {
+  id        String  @id @default(uuid())
+  text      String
+  isCorrect Boolean @default(false)
+
+  questionId         String
+  question           QuizQuestion        @relation(fields: [questionId], references: [id])
+  quizAttemptAnswers QuizAttemptAnswer[]
+}
+
+// =====================================
+// ============ QUIZ ATTEMPTS ==========
+// =====================================
+
+model QuizAttempt {
+  id        String   @id @default(uuid())
+  userId    String
+  quizId    String
+  score     Float?
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+  quiz Quiz @relation(fields: [quizId], references: [id])
+
+  answers QuizAttemptAnswer[]
+}
+
+// =====================================
+// ======= QUIZ ATTEMPT ANSWERS ========
+// Supports ALL question types
+// =====================================
+
+model QuizAttemptAnswer {
+  id String @id @default(uuid())
+
+  attemptId     String
+  questionId    String
+  answerId      String? // for MCQ / TRUE-FALSE / MULTI-SELECT
+  writtenAnswer String? // for COMPLETE / WRITTEN questions
+
+  attempt  QuizAttempt  @relation(fields: [attemptId], references: [id])
+  question QuizQuestion @relation(fields: [questionId], references: [id])
+  answer   QuizAnswer?  @relation(fields: [answerId], references: [id])
+}
+
+model ChatConversation {
+  id        String   @id @default(cuid())
+  userId    String
+  courseId  String?  
+  lessonId  String? 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user      User     @relation(fields: [userId], references: [id])
+  course    Course?  @relation(fields: [courseId], references: [id])
+  lesson    Lesson?  @relation(fields: [lessonId], references: [id])
+
+  messages  ChatMessage[]
+}
+
+model ChatMessage {
+  id              String       @id @default(cuid())
+  conversationId  String
+  role            ChatRole     
+  content         String
+  createdAt       DateTime     @default(now())
+  conversation    ChatConversation @relation(fields: [conversationId], references: [id])
+}
+
+enum ChatRole {
+  USER
+  MODEL
+}

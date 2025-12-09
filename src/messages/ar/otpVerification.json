@@ -1,0 +1,39 @@
+{
+    "otp_page_title": "تأكيد حسابك",
+    "otp_page_description_with_email": "لقد أرسلنا رمزاً مكوناً من 6 أرقام إلى **{email}**. يُرجى إدخال الرمز أدناه لإكمال التسجيل.",
+    
+    "verify_button": "تأكيد الرمز",
+    "verifying_button": "جاري التأكيد...",
+    
+    "resend_link": "إعادة إرسال الرمز",
+    "resend_wait": "انتظر {seconds} ثانية لإعادة الإرسال",
+    
+    "validation_title": "طول الرمز غير صحيح",
+    "validation_description": "الرجاء إدخال رمز التحقق المكون من 6 أرقام بالكامل.",
+    
+    "verification_success_title": "تم التأكيد بنجاح!",
+    "verification_success_description": "تم تأكيد حسابك. جاري تحويلك إلى صفحة تسجيل الدخول...",
+    "verification_error_title": "فشل التأكيد",
+    
+    "api_error_title": "خطأ",
+    "api_error_description": "حدث خطأ غير متوقع أثناء عملية التأكيد. يُرجى المحاولة مرة أخرى.",
+    "resend_error_description": "فشل طلب رمز جديد. تحقق من اتصالك أو حاول لاحقًا.",
+    
+    "missing_email_title": "البريد الإلكتروني مفقود",
+    "missing_email_description_verify": "سياق البريد الإلكتروني مفقود. لا يمكن التأكيد.",
+    
+    "email_validation_title": "صيغة بريد إلكتروني غير صالحة",
+    "email_validation_description": "الرجاء إدخال عنوان بريد إلكتروني صالح.",
+
+    "email_submit_success_title": "تم إرسال الرمز!",
+    "email_submit_success_description": "تم إرسال رمز تحقق جديد بنجاح إلى بريدك الإلكتروني.",
+    "email_submit_error_description": "فشل إرسال الرمز. يرجى التأكد من صحة البريد الإلكتروني.",
+
+    "missing_email_input_description": "لم يتم العثور على عنوان البريد الإلكتروني المسجل. الرجاء إدخاله أدناه لاستلام رمز جديد.",
+    "email_input_title": "أدخل بريدك الإلكتروني",
+    "email_input_description": "الرجاء تقديم البريد الإلكتروني المرتبط بحسابك لاستلام رمز تحقق جديد.",
+    
+    "email_placeholder": "example@domain.com",
+    "send_code_button": "إرسال الرمز",
+    "requesting_otp_button": "جاري طلب الرمز لمرة واحدة..."
+  }

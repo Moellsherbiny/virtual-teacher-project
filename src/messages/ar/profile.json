@@ -1,0 +1,32 @@
+{
+  "header": "الملف الشخصي للمستخدم",
+  "infoCardTitle": "المعلومات الشخصية",
+  "editProfile": "تعديل الملف الشخصي",
+  "memberSince": "تاريخ الانضمام",
+  "settingsTitle": "إعدادات الحساب",
+  "editFormTitle": "تحديث التفاصيل الشخصية",
+  "nonEditMessage": "انقر على 'تعديل الملف الشخصي' لتحديث اسمك وتفاصيل أخرى. ملاحظة: لا يمكن تغيير بريدك الإلكتروني من هنا.",
+  "studentStats": "إحصائيات الطالب",
+  "instructorStats": "لوحة المدرب",
+  "adminStats": "أدوات المشرف",
+  "enrolledCourses": "الدورات المسجل بها",
+  "coursesTaught": "الدورات التي يدرسها",
+  "locale": "ar-EG",
+  "roles": {
+    "student": "طالب",
+    "instructor": "مدرب",
+    "admin": "مشرف"
+  },
+  "form": {
+    "nameLabel": "الاسم",
+    "emailLabel": "البريد الإلكتروني",
+    "cancel": "إلغاء",
+    "save": "حفظ التغييرات"
+  },
+  "toast": {
+    "successTitle": "تم تحديث الملف",
+    "successDescription": "تم حفظ معلوماتك بنجاح.",
+    "errorTitle": "فشل التحديث",
+    "errorDescription": "حدث خطأ أثناء حفظ التغييرات. يرجى المحاولة مرة أخرى."
+  }
+}

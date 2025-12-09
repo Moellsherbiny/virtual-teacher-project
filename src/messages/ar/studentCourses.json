@@ -1,0 +1,28 @@
+{
+  "pageTitle": "اكتشف جميع الدورات",
+  "pageSubtitle": "ابحث عن الدورة المثالية لتبدأ رحلتك التعليمية.",
+  "instructorLabel": "بإشراف",
+  "modules": "وحدة",
+  "students": "طالب",
+  "noDescription": "لم يتم توفير وصف لهذه الدورة.",
+  "enrolledStatus": "مسجل",
+  "viewCourse": "عرض الدورة",
+  "continueCourse": "متابعة الدورة",
+  "noCoursesFound": "لا توجد دورات متاحة حاليًا. تحقق مرة أخرى لاحقًا!",
+
+  "CourseDetails": {
+    "instructorLabel": "بإشراف",
+    "enrollNow": "سجل الآن",
+    "enrolledStatus": "مسجل",
+    "goToCourse":"الذهاب لمشاهدة الدورة",
+    "selectLesson": "اختر درسًا لتبدأ.",
+    "videoPlaceholder": "مساحة عرض الفيديو",
+    "noContent": "لم يوفر المدرب محتوى لهذا الدرس بعد.",
+    "markComplete": "وضع علامة كـ مكتمل",
+    "completed": "مكتمل",
+    "curriculum": "محتوى الدورة",
+    "locale": "ar-EG",
+    "direction": "rtl",
+    "align": "start"
+  }
+}

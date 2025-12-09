@@ -1,0 +1,95 @@
+{
+  "common": {
+    "loading": "جاري التحميل...",
+    "error": "خطأ",
+    "success": "نجاح",
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "delete": "حذف",
+    "edit": "تعديل",
+    "back": "رجوع",
+    "next": "التالي",
+    "previous": "السابق",
+    "search": "بحث",
+    "filter": "تصفية",
+    "noResults": "لا توجد نتائج"
+  },
+  "navigation": {
+    "home": "الرئيسية",
+    "courses": "الدورات",
+    "myCourses": "دوراتي",
+    "profile": "الملف الشخصي",
+    "settings": "الإعدادات",
+    "logout": "تسجيل الخروج"
+  },
+  "courses": {
+    "title": "الدورات",
+    "allCourses": "جميع الدورات",
+    "enrolledCourses": "الدورات المسجلة",
+    "courseDetails": "تفاصيل الدورة",
+    "enroll": "سجل الآن",
+    "enrolled": "مسجل",
+    "unenroll": "إلغاء التسجيل",
+    "startLearning": "ابدأ التعلم",
+    "continueLearning": "استمر في التعلم",
+    "instructor": "المدرب",
+    "modules": "الوحدات",
+    "lessons": "الدروس",
+    "quizzes": "الاختبارات",
+    "description": "الوصف",
+    "noCourses": "لا توجد دورات متاحة",
+    "searchPlaceholder": "ابحث عن الدورات...",
+    "filterByCategory": "تصفية حسب الفئة",
+    "enrollmentRequired": "سجل في هذه الدورة للوصول إلى جميع الدروس والمواد",
+    "enrollmentSuccess": "تم التسجيل في الدورة بنجاح!",
+    "unenrollmentSuccess": "تم إلغاء التسجيل من الدورة بنجاح"
+  },
+  "modules": {
+    "title": "الوحدات",
+    "moduleTitle": "الوحدة",
+    "lessonsCount": "{count} درس",
+    "completed": "مكتمل",
+    "inProgress": "قيد التقدم",
+    "locked": "مقفل"
+  },
+  "lessons": {
+    "title": "الدروس",
+    "lessonTitle": "الدرس",
+    "videoLesson": "درس فيديو",
+    "textLesson": "درس نصي",
+    "materials": "المواد",
+    "downloadMaterial": "تحميل المادة",
+    "markComplete": "وضع علامة كمكتمل",
+    "completed": "مكتمل",
+    "duration": "المدة",
+    "transcript": "النص",
+    "resources": "الموارد"
+  },
+  "profile": {
+    "title": "الملف الشخصي",
+    "myProfile": "ملفي الشخصي",
+    "personalInfo": "المعلومات الشخصية",
+    "name": "الاسم",
+    "email": "البريد الإلكتروني",
+    "phone": "الهاتف",
+    "progress": "تقدم التعلم",
+    "coursesCompleted": "الدورات المكتملة",
+    "coursesInProgress": "الدورات قيد التقدم",
+    "totalLessons": "إجمالي الدروس",
+    "certificates": "الشهادات"
+  },
+  "theme": {
+    "light": "فاتح",
+    "dark": "داكن",
+    "system": "النظام"
+  },
+  "errors": {
+    "general": "حدث خطأ ما",
+    "notFound": "غير موجود",
+    "unauthorized": "غير مصرح",
+    "networkError": "خطأ في الشبكة. يرجى المحاولة مرة أخرى.",
+    "loadingFailed": "فشل تحميل البيانات",
+    "enrollmentFailed": "فشل التسجيل في الدورة",
+    "alreadyEnrolled": "مسجل بالفعل في هذه الدورة"
+  }
+}

@@ -1,0 +1,39 @@
+{
+    "otp_page_title": "Verify Your Account",
+    "otp_page_description_with_email": "We have sent a 6-digit code to **{email}**. Please enter the code below to complete your registration.",
+    
+    "verify_button": "Verify Code",
+    "verifying_button": "Verifying...",
+    
+    "resend_link": "Resend Code",
+    "resend_wait": "Wait {seconds} seconds to resend",
+    
+    "validation_title": "Invalid Code Length",
+    "validation_description": "Please enter the complete 6-digit verification code.",
+    
+    "verification_success_title": "Verification Successful!",
+    "verification_success_description": "Your account is verified. Redirecting to login...",
+    "verification_error_title": "Verification Failed",
+    
+    "api_error_title": "Error",
+    "api_error_description": "An unexpected error occurred during verification. Please try again.",
+    "resend_error_description": "Failed to request a new code. Check your connection or try again later.",
+    
+    "missing_email_title": "Email Missing",
+    "missing_email_description_verify": "Missing email context. Cannot verify.",
+    
+    "email_validation_title": "Invalid Email Format",
+    "email_validation_description": "Please enter a valid email address.",
+    
+    "email_submit_success_title": "Code Sent!",
+    "email_submit_success_description": "A new verification code has been successfully sent to your email.",
+    "email_submit_error_description": "Failed to send the code. Please ensure the email is correct.",
+
+    "missing_email_input_description": "The registered email address was not found. Please enter it below to receive a new code.",
+    "email_input_title": "Enter Your Email",
+    "email_input_description": "Please provide the email associated with your account to receive a new verification code.",
+    
+    "email_placeholder": "example@domain.com",
+    "send_code_button": "Send Code",
+    "requesting_otp_button": "Requesting OTP..." 
+  }

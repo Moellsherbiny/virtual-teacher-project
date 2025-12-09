@@ -1,0 +1,28 @@
+{
+  "pageTitle": "Explore All Courses",
+  "pageSubtitle": "Find the perfect course to start your learning journey.",
+  "instructorLabel": "Taught by",
+  "modules": "Modules",
+  "students": "Students",
+  "noDescription": "No description provided for this course.",
+  "enrolledStatus": "Enrolled",
+  "viewCourse": "View Course",
+  "continueCourse": "Continue Course",
+  "noCoursesFound": "No courses are available right now. Check back later!",
+
+  "CourseDetails": {
+    "instructorLabel": "Taught by",
+    "enrollNow": "Enroll Now",
+    "enrolledStatus": "Enrolled",
+    "goToCourse":"Go to watch course",
+    "selectLesson": "Select a lesson to begin.",
+    "videoPlaceholder": "Video Player Placeholder",
+    "noContent": "The instructor has not provided content for this lesson yet.",
+    "markComplete": "Mark as Completed",
+    "completed": "Completed",
+    "curriculum": "Course Curriculum",
+    "locale": "en-US",
+    "direction": "ltr",
+    "align": "end"
+  }
+}

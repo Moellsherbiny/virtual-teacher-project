@@ -1,0 +1,16 @@
+{
+  "general": "عام",
+  "userSpecific": "لوحة التحكم",
+  "home": "الرئيسية",
+  "dashboard": "لوحة القيادة",
+  "search": "بحث",
+  "settings": "الإعدادات",
+  "login": "تسجيل الدخول / إنشاء حساب",
+
+  "myCourses": "دوراتي",
+  "grades": "الدرجات",
+  "manageCourses": "إدارة الدورات",
+  "quizzes": "الاختبارات",
+  "manageUsers": "إدارة المستخدمين",
+  "analytics": "التحليلات"
+}

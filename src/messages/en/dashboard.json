@@ -1,0 +1,218 @@
+{
+  "userMenu": {
+    "profile": "Profile",
+    "signOut": "Sign Out",
+    "ariaLabel": "User Menu",
+    "dir": "ltr"
+  },
+  "AdminHome": {
+    "greeting": "Welcome back, {name}",
+    "welcomeMessage": "Here's an overview of your platform's statistics.",
+    "placeholderUser": "Admin",
+    "courses": "Courses",
+    "users": "Users",
+    "quizzes": "Quizzes",
+    "conversations": "Conversations",
+    "manageCourses": "Manage Courses"
+  },
+  "menu":{
+    "users":"All Users",
+    "results":"Results",
+    "home":"Home",
+    "courses":"Courses",
+    "quizzes":"Quizzes",
+    "manageCourses":"Manage Courses",
+    "manageQuizzes":"Manage Quizzes"
+  },
+"courseManagement": {
+      "labels": {
+        "module": "Module",
+        "published": "Published",
+        "draft": "Draft",
+        "live": "Live",
+        "pending": "Pending"
+      },
+      "buttons": {
+        "addLesson": "Add Lesson",
+        "editModuleTitle": "Edit Module",
+        "deleteModuleTitle": "Delete Module",
+        "editLessonTitle": "Edit Lesson",
+        "deleteLessonTitle": "Delete Lesson",
+        "cancel": "Cancel",
+        "saveChanges": "Save Changes",
+        "saving": "Saving...",
+        "deleteModule": "Yes, Delete Module",
+        "deleteLesson": "Yes, Delete Lesson",
+        "deleting": "Deleting..."
+      },
+      "form": {
+        "titleLabel": "Title",
+        "titlePlaceholder": "e.g., Introduction to JavaScript",
+        "orderLabel": "Order in Module/Course",
+        "videoUrlLabel": "Video URL (Optional)",
+        "videoUrlPlaceholder": "Paste YouTube or Vimeo link...",
+        "contentLabel": "Text Content (Supports HTML/Markdown)",
+        "contentPlaceholder": "Write the lesson summary or detailed notes here...",
+        "publishLabel": "Publish Now",
+        "publishDescription": "Check this box to make this item visible to students immediately."
+      },
+      "dialogs": {
+        "createModuleTitle": "Create New Module",
+        "editModuleTitle": "Edit Module Details",
+        "moduleDescription": "Define the structure and order of this module within the course.",
+        "deleteModuleConfirmationTitle": "Confirm Module Deletion",
+        "deleteModuleConfirmationBody": "Are you sure you want to delete the module: \"{title}\"? This action cannot be undone and will delete all associated lessons.",
+        
+        "createLessonTitle": "Create New Lesson",
+        "editLessonTitle": "Edit Lesson Content",
+        "createLessonDescription": "Enter details for the new lesson within the current module.",
+        "editLessonDescription": "Update the content, order, or status of this lesson.",
+        "deleteLessonConfirmationTitle": "Confirm Lesson Deletion",
+        "deleteLessonConfirmationBody": "Are you sure you want to delete the lesson: \"{title}\"? This action cannot be undone."
+      },
+      "toast": {
+        "createSuccessTitle": "Created Successfully! 🎉",
+        "editSuccessTitle": "Updated Successfully! ✅",
+        "deleteSuccessTitle": "Deleted Successfully! 🗑️",
+        "successDescription": "\"{title}\" has been successfully saved.",
+        "deleteSuccessDescription": "\"{title}\" was successfully deleted.",
+        "errorTitle": "Operation Failed ❌",
+        "apiErrorFallback": "An unexpected error occurred on the server."
+      },
+      "validation": {
+        "required": "This field is required.",
+        "maxLength": "Must be less than {length} characters.",
+        "mustBeNumber": "Order must be a number.",
+        "minOrder": "Order must be 0 or greater.",
+        "invalidUrl": "Must be a valid URL."
+      },
+      "emptyState": {
+        "noLessons": "No lessons have been added to this module yet."
+      }
+    },
+
+  "EditCoursePage": {
+    "header": "Edit Course",
+    "backToManagement": "Back to Course Management",
+    "formCardTitle": "Course Details",
+    "settingsCardTitle": "Course Settings",
+    "settingsPlaceholder": "Future settings like visibility, prerequisites, etc., will go here.",
+    "modulesCardTitle": "Modules and Lessons Structure",
+    "modulesPlaceholder": "Start adding modules and lessons to structure your course content.",
+    "notFound": "Course Not Found",
+    "notFoundMessage": "The course you are trying to edit does not exist or you do not have permission to access it.",
+    "form": {
+      "titleLabel": "Title",
+      "titlePlaceholder": "e.g., Mastering React Hooks",
+      "descriptionLabel": "Description",
+      "descriptionPlaceholder": "A brief overview of the course content and learning objectives.",
+      "imageUrlLabel": "Image URL",
+      "imageUrlPlaceholder": "URL for the course thumbnail image",
+      "saving": "Saving...",
+      "saveChanges": "Save Changes"
+    },
+    "validation": {
+      "titleMin": "The title must be at least 3 characters long."
+    },
+    "toast": {
+      "fetchError": "Error fetching course details.",
+      "fetchErrorDescription": "Could not load the course data for editing.",
+      "successTitle": "Course Updated!",
+      "successDescription": "The course '{title}' has been updated successfully.",
+      "errorTitle": "Update Failed",
+      "errorMessage": "There was an error updating the course. Please try again."
+    }
+  },
+
+  "ModulesManager": {
+    "buttons": {
+      "addModule": "Add Module",
+      "addLesson": "Add Lesson",
+      "editLessonTitle": "Edit Lesson",
+      "deleteLessonTitle": "Delete Lesson"
+    },
+    "labels": {
+      "module": "Module",
+      "published": "Published",
+      "draft": "Draft",
+      "live": "Live",
+      "pending": "Pending"
+    },
+    "emptyState": {
+      "title": "No modules yet",
+      "description": "Create your first module to get started",
+      "noLessons": "No lessons in this module"
+    },
+    "toast": {
+      "fetchError": "Failed to fetch modules"
+    }
+  },
+  "Dialogs": {
+    "module": {
+      "createTitle": "Create Module",
+      "editTitle": "Edit Module",
+      "createButton": "Create",
+      "editButton": "Update"
+    },
+    "lesson": {
+      "createTitle": "Create Lesson",
+      "editTitle": "Edit Lesson",
+      "createButton": "Create",
+      "editButton": "Update"
+    }
+  },
+  "CreateModule": {
+    "title": "Create New Module",
+    "description": "Add a new organizational module to the course. This will contain lessons.",
+    "form": {
+      "titleLabel": "Module Title",
+      "titlePlaceholder": "e.g., Introduction to JavaScript",
+      "orderLabel": "Module Order",
+      "orderPlaceholder": "e.g., 1 or 10 (Determines position)",
+      "cancel": "Cancel",
+      "creating": "Creating...",
+      "createModule": "Create Module"
+    },
+    "toast": {
+      "successTitle": "Module Created! 🎉",
+      "successDescription": "Module \"{title}\" has been successfully added to the course.",
+      "errorTitle": "Creation Failed ❌",
+      "errorMessage": "Failed to create the module. Please try again. If the issue persists, contact support.",
+      "apiErrorFallback": "An unexpected error occurred on the server."
+    },
+    "validation": {
+      "required": "This field is required.",
+      "maxLength": "Must be less than 100 characters.",
+      "mustBeNumber": "Order must be a number.",
+      "minOrder": "Order must be 0 or greater."
+    }
+  },
+
+  "UserManagement": {
+    "header": "User Management",
+    "createNew": "Create New User",
+    "cardTitle": "All Users",
+    "locale": "en",
+    "direction": "ltr",
+    "align": "end",
+
+    "roles": {
+      "student": "Student",
+      "instructor": "Instructor",
+      "admin": "Admin"
+    },
+    "table": {
+      "name": "Name",
+      "email": "Email",
+      "role": "Role",
+      "enrollments": "Courses Enrolled",
+      "createdAt": "Joined At",
+      "actions": "Actions",
+      "openMenu": "Open menu",
+      "actionsFor": "Actions",
+      "edit": "Edit",
+      "delete": "Delete",
+      "resetPassword": "Reset Password"
+    }
+  }
+}

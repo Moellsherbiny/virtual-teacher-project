@@ -1,0 +1,95 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "search": "Search",
+    "filter": "Filter",
+    "noResults": "No results found"
+  },
+  "navigation": {
+    "home": "Home",
+    "courses": "Courses",
+    "myCourses": "My Courses",
+    "profile": "Profile",
+    "settings": "Settings",
+    "logout": "Logout"
+  },
+  "courses": {
+    "title": "Courses",
+    "allCourses": "All Courses",
+    "enrolledCourses": "Enrolled Courses",
+    "courseDetails": "Course Details",
+    "enroll": "Enroll Now",
+    "enrolled": "Enrolled",
+    "unenroll": "Unenroll",
+    "startLearning": "Start Learning",
+    "continueLearning": "Continue Learning",
+    "instructor": "Instructor",
+    "modules": "Modules",
+    "lessons": "Lessons",
+    "quizzes": "Quizzes",
+    "description": "Description",
+    "noCourses": "No courses available",
+    "searchPlaceholder": "Search courses...",
+    "filterByCategory": "Filter by category",
+    "enrollmentRequired": "Enroll in this course to access all lessons and materials",
+    "enrollmentSuccess": "Successfully enrolled in course!",
+    "unenrollmentSuccess": "Successfully unenrolled from course"
+  },
+  "modules": {
+    "title": "Modules",
+    "moduleTitle": "Module",
+    "lessonsCount": "{count} lessons",
+    "completed": "Completed",
+    "inProgress": "In Progress",
+    "locked": "Locked"
+  },
+  "lessons": {
+    "title": "Lessons",
+    "lessonTitle": "Lesson",
+    "videoLesson": "Video Lesson",
+    "textLesson": "Text Lesson",
+    "materials": "Materials",
+    "downloadMaterial": "Download Material",
+    "markComplete": "Mark as Complete",
+    "completed": "Completed",
+    "duration": "Duration",
+    "transcript": "Transcript",
+    "resources": "Resources"
+  },
+  "profile": {
+    "title": "Profile",
+    "myProfile": "My Profile",
+    "personalInfo": "Personal Information",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "progress": "Learning Progress",
+    "coursesCompleted": "Courses Completed",
+    "coursesInProgress": "Courses in Progress",
+    "totalLessons": "Total Lessons",
+    "certificates": "Certificates"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "errors": {
+    "general": "Something went wrong",
+    "notFound": "Not found",
+    "unauthorized": "Unauthorized",
+    "networkError": "Network error. Please try again.",
+    "loadingFailed": "Failed to load data",
+    "enrollmentFailed": "Failed to enroll in course",
+    "alreadyEnrolled": "Already enrolled in this course"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "header": "User Profile",
+  "infoCardTitle": "Personal Information",
+  "editProfile": "Edit Profile",
+  "memberSince": "Member Since",
+  "settingsTitle": "Account Settings",
+  "editFormTitle": "Update Personal Details",
+  "nonEditMessage": "Click 'Edit Profile' to update your name and other details. Note: Your email address cannot be changed here.",
+  "studentStats": "Student Statistics",
+  "instructorStats": "Instructor Dashboard",
+  "adminStats": "Admin Tools Access",
+  "enrolledCourses": "Enrolled Courses",
+  "coursesTaught": "Courses Taught",
+  "locale": "en-US",
+  "roles": {
+    "student": "Student",
+    "instructor": "Instructor",
+    "admin": "Admin"
+  },
+  "form": {
+    "nameLabel": "Name",
+    "emailLabel": "Email Address",
+    "cancel": "Cancel",
+    "save": "Save Changes"
+  },
+  "toast": {
+    "successTitle": "Profile Updated",
+    "successDescription": "Your information has been successfully saved.",
+    "errorTitle": "Update Failed",
+    "errorDescription": "There was an error saving your changes. Please try again."
+  }
+}

@@ -1,0 +1,62 @@
+ {
+    "aiPowered": "AI Powered",
+    "heroTitle": "Robot of the Future",
+    "heroSubtitle": "A revolutionary learning experience powered by intelligent personalization",
+
+    "introTitle": "Who am I?",
+    "introText": "I am a virtual educational robot that uses advanced AI technologies to deliver a unique and personalized learning experience.",
+
+    "capabilitiesTitle": "Capabilities",
+    "capabilities": [
+      {
+        "title": "Chat with the Robot",
+        "description": "Ask questions and receive instant interactive answers"
+      },
+      {
+        "title": "Full Educational Content",
+        "description": "Comprehensive lessons covering all subjects"
+      },
+      {
+        "title": "Smart Exams",
+        "description": "Interactive exams with instant correction"
+      },
+      {
+        "title": "Flexible Subscriptions",
+        "description": "Multiple subscription plans for premium content"
+      },
+      {
+        "title": "Progress Tracking",
+        "description": "Detailed analytics and performance tracking"
+      }
+    ],
+
+    "workflowTitle": "How It Works",
+    "workflow": [
+      {
+        "title": "Input Processing",
+        "description": "Using NLP to analyze user text"
+      },
+      {
+        "title": "Context Understanding",
+        "description": "Deep understanding of the user's intent"
+      },
+      {
+        "title": "Smart Search",
+        "description": "Accessing advanced AI models and datasets"
+      },
+      {
+        "title": "Customized Answers",
+        "description": "Delivering clear and simplified responses"
+      },
+      {
+        "title": "Continuous Interaction",
+        "description": "Dynamic responses based on conversation flow"
+      }
+    ],
+
+    "ctaTitle": "Start Your Journey Now",
+    "ctaSubtitle": "Join thousands of students exploring the future of digital learning",
+    "ctaStart": "Start for Free",
+    "ctaLearnMore": "Learn More"
+  }
+

@@ -1,0 +1,16 @@
+{
+  "general": "GENERAL",
+  "userSpecific": "DASHBOARD",
+  "home": "Home",
+  "dashboard": "Dashboard",
+  "search": "Search",
+  "settings": "Settings",
+  "login": "Login / Sign Up",
+
+  "myCourses": "My Courses",
+  "grades": "Grades",
+  "manageCourses": "Manage Courses",
+  "quizzes": "Quizzes",
+  "manageUsers": "Manage Users",
+  "analytics": "Analytics"
+}

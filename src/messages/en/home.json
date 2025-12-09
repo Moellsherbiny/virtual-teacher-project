@@ -1,0 +1,199 @@
+{
+  "nav": {
+    "features": "Features",
+    "howItWorks": "How it Works",
+    "subjects": "Subjects",
+    "login": "Login",
+    "getStarted": "Get Started"
+  },
+  "hero": {
+    "badge": "Next-Generation Learning Platform",
+    "title": "Meet your",
+    "titleHighlight": "Virtual Educational Robot",
+    "highlight": "Virtual Educational Robot",
+    "titleEnd": "Robot",
+    "welcome": "Hello",
+    "subtitle": "Learning that adapts to you. Available 24/7. No patience limits. Just pure, personalized education powered by advanced AI.",
+    "cta_primary": "Start Learning Free",
+    "cta_secondary": "See It In Action",
+    "cta1": "Start Learning Free",
+    "cta2": "See It In Action",
+    "stats": {
+      "students": "Students Learning",
+      "courses": "Subjects & Skills",
+      "rating": "Average Rating"
+    },
+    "statusOnline": "Online & Ready",
+    "statusPersonalizing": "Personalizing your path..."
+  },
+  "features": {
+    "title": "AI Capabilities",
+    "subtitle": "More than just a chatbot. A true learning companion.",
+    "voice": {
+      "title": "Voice Interaction",
+      "desc": "Natural two-way voice conversations with instant responses."
+    },
+    "text": {
+      "title": "Smart Messaging",
+      "desc": "Context-aware text support for homework help and complex explanations."
+    },
+    "context": {
+      "title": "Deep Context",
+      "desc": "Remembers past lessons and adapts to the student's learning curve."
+    }
+  },
+  "testimonials": {
+    "title": "What Students Are Saying",
+    "subtitle": "Real results from real learners",
+    "items": [
+      {
+        "name": "Sarah M.",
+        "role": "High School Student",
+        "text": "I went from struggling with math to actually enjoying it. The AI teacher explains things in a way that clicks for me."
+      },
+      {
+        "name": "James P.",
+        "role": "College Student",
+        "text": "I used this to prepare for my final exams and improved my grades significantly. Worth every penny."
+      },
+      {
+        "name": "Maya K.",
+        "role": "Career Changer",
+        "text": "Learning new skills on my own schedule was exactly what I needed. The personalized approach really made a difference."
+      }
+    ]
+  },
+  "howItWorks": {
+    "title": "How It Works",
+    "subtitle": "Three simple steps to start learning",
+    "steps": [
+      {
+        "title": "Create Profile",
+        "desc": "Sign up and set your educational level (K-12, University) and goals."
+      },
+      {
+        "title": "Choose Your Guide",
+        "desc": "Select a virtual teacher personality that matches your learning style."
+      },
+      {
+        "title": "Start Interaction",
+        "desc": "Ask questions via voice or text. Upload homework photos for instant help."
+      },
+      {
+        "title": "Track Growth",
+        "desc": "View detailed analytics on your progress and areas for improvement."
+      }
+    ]
+  },
+  "faqTitle": "Frequently Asked Questions",
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Everything you need to know",
+    "items": [
+      {
+        "question": "How does the AI teacher adapt to my learning style?",
+        "answer": "Our AI analyzes how you learn best—whether through videos, explanations, examples, or practice problems. It tracks your progress in real-time and adjusts difficulty, pacing, and teaching methods accordingly."
+      },
+      {
+        "question": "Can I use this alongside traditional schooling?",
+        "answer": "Absolutely! Many students use our platform to supplement their studies, get extra help with difficult subjects, or prepare for exams. You control when and how much you learn."
+      },
+      {
+        "question": "What subjects are available?",
+        "answer": "We cover Math, Science, English, History, Languages, and professional skills. New courses are added regularly based on student demand."
+      },
+      {
+        "question": "Is there a community aspect?",
+        "answer": "Yes! You can join study groups, participate in challenges, and connect with other learners. Our community features help you stay motivated and learn together."
+      },
+      {
+        "question": "What happens after my 14-day trial?",
+        "answer": "After the trial, you can choose a plan that works for you. We offer flexible pricing with no long-term contracts—cancel anytime."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Ready to Start Learning?",
+    "subtitle": "Join thousands of students on their path to mastery. No credit card required.",
+    "placeholder": "Enter your email",
+    "button": "Get Started Free",
+    "dashboard": "Go To Dashboard",
+    "loading": "Getting Started...",
+    "success": "Success! Check your email to get started.",
+    "error": "Something went wrong. Please try again.",
+    "duplicate": "This email is already registered.",
+    "benefits": [
+      "14-day free trial • No credit card required",
+      "Cancel anytime • 100% money-back guarantee"
+    ]
+  },
+  "footer": {
+    "description": "The AI-powered learning platform trusted by students worldwide",
+    "links": ["About", "Privacy", "Terms", "Contact"]
+  },
+  "stats": {
+    "students": "500K+",
+    "studentsLabel": "Students Learning",
+    "subjects": "50+",
+    "subjectsLabel": "Subjects & Skills",
+    "rating": "4.9/5",
+    "ratingLabel": "Average Rating"
+  },
+  "faqs": [
+    {
+      "question": "How does the AI teacher adapt to my learning style?",
+      "answer": "Our AI analyzes how you learn best—whether through videos, explanations, examples, or practice problems. It tracks your progress in real-time and adjusts difficulty, pacing, and teaching methods accordingly."
+    },
+    {
+      "question": "Can I use this alongside traditional schooling?",
+      "answer": "Absolutely! Many students use our platform to supplement their studies, get extra help with difficult subjects, or prepare for exams. You control when and how much you learn."
+    },
+    {
+      "question": "What subjects are available?",
+      "answer": "We cover Math, Science, English, History, Languages, and professional skills. New courses are added regularly based on student demand."
+    },
+    {
+      "question": "Is there a community aspect?",
+      "answer": "Yes! You can join study groups, participate in challenges, and connect with other learners. Our community features help you stay motivated and learn together."
+    },
+    {
+      "question": "What happens after my 14-day trial?",
+      "answer": "After the trial, you can choose a plan that works for you. We offer flexible pricing with no long-term contracts—cancel anytime."
+    }
+  ],
+  "signup": {
+    "title": "Ready to Start Learning?",
+    "subtitle": "Join thousands of students today — no credit card needed.",
+    "placeholder": "Enter your email",
+    "button": "Get Started Free",
+    "loading": "Getting Started...",
+    "success": "Success! Check your email.",
+    "note1": "14-day free trial",
+    "note2": "Cancel anytime"
+  },
+  "subjects": {
+    "title": "Explore Subjects",
+    "subtitle": "Our AI is trained on a vast curriculum to help you excel in any field.",
+    "math": "Mathematics",
+    "science": "Science",
+    "lang": "Languages",
+    "code": "Coding",
+    "history": "History",
+    "arts": "Arts"
+  },
+  "roles": {
+    "title": "Built for Everyone",
+    "student": {
+      "title": "Student",
+      "desc": "Personalized 1-on-1 tutoring available 24/7."
+    },
+    "teacher": {
+      "title": "Teacher",
+      "desc": "Automate grading and get insights into student gaps."
+    },
+    "admin": {
+      "title": "Admin",
+      "desc": "Manage usage, licenses, and institutional analytics."
+    }
+  }
+}

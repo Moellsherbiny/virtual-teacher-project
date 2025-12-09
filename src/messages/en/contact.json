@@ -1,0 +1,33 @@
+{
+  "titleBadge": "Contact Us",
+  "headerTitle": "We Are Here to Help You",
+  "headerDesc": "Have a question or inquiry? Don’t hesitate to contact us, our team is ready to respond",
+  "infoTitle": "Contact Information",
+  "infoEmail": "Email",
+  "infoPhone": "Phone",
+  "infoAddress": "Address",
+  "infoWorkHours": "Working Hours",
+  "formTitle": "Send Us a Message",
+  "formDesc": "Fill out the form below and we will respond to you as soon as possible",
+  "name": "Full Name",
+  "email": "Email",
+  "subject": "Subject",
+  "message": "Message",
+  "placeholder": {
+    "name": "Enter your full name",
+    "email": "example@email.com",
+    "subject": "Message subject",
+    "message": "Write your message here..."
+  },
+  "required": "*",
+  "status": {
+    "success": "Your message has been sent successfully! We will get back to you shortly.",
+    "error": "An error occurred while sending. Please try again."
+  },
+  "submit": "Send Message",
+  "sending": "Sending...",
+  "socialTitle": "Follow Us On",
+  "faqTitle": "Have Quick Questions?",
+  "faqDesc": "Check the FAQ page for immediate answers",
+  "faqButton": "FAQ"
+}
