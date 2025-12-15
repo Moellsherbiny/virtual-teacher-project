@@ -1,0 +1,21 @@
+{
+    "loading": "Loading course details...",
+    "courseOutline": "Course Outline",
+    "module": "Module",
+    "yourProgress": "Your Progress",
+    "lessonsCompleted": "lessons completed",
+    "video": "Video Lesson",
+    "text": "Text Lesson",
+    "materilas": "Materials",
+    "quiz": "Quiz Available",
+    "takeQuiz": "Take Quiz",
+    "downloadMaterials": "Download Course Materials",
+    "clickToDownload": "Click here to download the files.",
+    "contentUnavailable": "Content Unavailable",
+    "contentUnavailableMessage": "The content for this lesson is currently unavailable. Please check back later or contact support.",
+    "selectLesson": "Select a Lesson to Begin",
+    "selectLessonDescription": "Use the course outline on the left to navigate through the modules and lessons.",
+    "courseNotFound": "Course Not Found",
+    "courseNotFoundMessage": "The course you are looking for does not exist or you are not enrolled.",
+    "dataFetchErrorMessage": "Failed to load real data. Displaying mock structure for visualization."
+  }

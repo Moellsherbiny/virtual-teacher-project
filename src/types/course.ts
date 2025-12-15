@@ -35,3 +35,41 @@ export type Course = {
   modulesCount: number;
   enrollmentCount: number;
 };
+
+
+// src/types/course.ts
+export interface LessonContent {
+  id: string;
+  title: string;
+  type: 'VIDEO' | 'TEXT' | 'FILE';
+  content: string | null;
+  videoUrl: string | null;
+  fileUrl: string | null;
+  order: number;
+  quizzes: { id: string; title: string }[];
+  isCompleted: boolean;
+}
+
+export interface CourseModule {
+  id: string;
+  title: string;
+  order: number;
+  lessons: LessonContent[];
+}
+
+export type ModuleStructure = {
+  id: string;
+  title: string;
+  order: number;
+  lessons: LessonContent[];
+};
+export interface CourseDetails {
+   id: string;
+    title: string;
+    description: string | null;
+    instructorName: string | null;
+    modules: ModuleStructure[];
+    totalLessons: number;
+    completedLessons: number;
+    overallProgress: number;
+}

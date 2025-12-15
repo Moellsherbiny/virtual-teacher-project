@@ -1,0 +1,21 @@
+ {
+    "loading": "جاري تحميل تفاصيل الدورة...",
+    "courseOutline": "محتوى الدورة",
+    "module": "الوحدة",
+    "yourProgress": "تقدمك",
+    "lessonsCompleted": "دروس مكتملة",
+    "video": "درس فيديو",
+    "text": "درس نصي",
+    "materilas": "مواد دراسية",
+    "quiz": "اختبار متاح",
+    "takeQuiz": "ابدأ الاختبار",
+    "downloadMaterials": "تحميل المواد الدراسية",
+    "clickToDownload": "انقر هنا لتحميل الملفات.",
+    "contentUnavailable": "المحتوى غير متوفر",
+    "contentUnavailableMessage": "المحتوى الخاص بهذا الدرس غير متوفر حاليًا. يرجى المحاولة لاحقًا أو الاتصال بالدعم.",
+    "selectLesson": "اختر درسًا للبدء",
+    "selectLessonDescription": "استخدم مخطط الدورة على الجانب للتنقل بين الوحدات والدروس.",
+    "courseNotFound": "الدورة غير موجودة",
+    "courseNotFoundMessage": "الدورة التي تبحث عنها غير موجودة أو أنك غير مسجل فيها.",
+    "dataFetchErrorMessage": "فشل تحميل البيانات الحقيقية. يتم عرض هيكل وهمي (Mock) للمعاينة."
+  }

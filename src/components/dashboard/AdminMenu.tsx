@@ -23,12 +23,7 @@ function AdminMenu() {
       icon: Inbox,
     },
     {
-      title: t("courses"),
-      url: "/dashboard/modules",
-      icon: Inbox,
-    },
-    {
-      title: t("results"),
+      title: t("quizzes"),
       url: "/dashboard/results",
       icon: Search,
     },

@@ -1,0 +1,20 @@
+{
+  "title": "لوحة تحكم الطالب",
+  "totalCourses": "إجمالي الدورات",
+  "totalCoursesDescription": "الدورات التي التحقت بها حاليًا أو سابقًا.",
+  "activeCourses": "الدورات النشطة",
+  "activeCoursesDescription": "الدورات التي تدرسها حاليًا.",
+  "completedQuizzes": "الاختبارات المكتملة",
+  "completedQuizzesDescription": "إجمالي عدد الاختبارات التي أنهيتها.",
+  "averageScore": "متوسط الدرجات",
+  "averageScoreDescription": "متوسط درجاتك في جميع المحاولات.",
+  "progressOverview": "نظرة عامة على التقدم في الدورات",
+  "progressChartPlaceholder": "سيتم عرض رسم بياني يوضح تقدمك في جميع الدورات النشطة هنا.",
+  "upcomingQuizzes": "الاختبارات/الواجبات القادمة",
+  "noUpcomingQuizzes": "لا توجد اختبارات أو واجبات قادمة في الوقت الحالي. استمر في العمل الجيد!",
+  "latestActivity": "أحدث التسجيلات",
+  "enrolledBy": "المُدرّس: {instructor}",
+  "new": "جديد",
+  "noActivity": "لم يتم العثور على نشاط حديث.",
+  "dataFetchError": "واجهنا مشكلة في تحميل بيانات لوحة التحكم الخاصة بك. يرجى محاولة التحديث."
+}

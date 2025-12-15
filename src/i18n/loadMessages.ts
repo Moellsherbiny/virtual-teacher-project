@@ -7,7 +7,8 @@ export async function loadMessages<T extends string = typeof routing.locales[num
     'home', 'about', 'auth', 'chatbot',
     'contact', 'navbar', 'footer',
     'otpVerification', 'dashboard', 'studentCourses',
-    'profile', 'course', 'courseAdmin' , 'sidebar'
+    'profile', 'course', 'courseAdmin' , 'sidebar',
+     'dashboardMyCourses' , 'studentDashboard', 'courseStudy'
   ] as const;
 
   const allMessages: Record<string, any> = {};

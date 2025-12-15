@@ -1,0 +1,20 @@
+{
+"title": "Student Dashboard",
+    "totalCourses": "Total Courses",
+    "totalCoursesDescription": "Courses you are currently or have been enrolled in.",
+    "activeCourses": "Active Courses",
+    "activeCoursesDescription": "Courses you are actively taking.",
+    "completedQuizzes": "Completed Quizzes",
+    "completedQuizzesDescription": "Total number of quizzes you have finished.",
+    "averageScore": "Average Quiz Score",
+    "averageScoreDescription": "Your average score across all attempts.",
+    "progressOverview": "Course Progress Overview",
+    "progressChartPlaceholder": "A chart showing your progress across all active courses will be displayed here.",
+    "upcomingQuizzes": "Upcoming Quizzes/Assignments",
+    "noUpcomingQuizzes": "No upcoming quizzes or assignments at the moment. Keep up the good work!",
+    "latestActivity": "Latest Enrollments",
+    "enrolledBy": "Instructor: {instructor}",
+    "new": "NEW",
+    "noActivity": "No recent activity found.",
+    "dataFetchError": "We encountered an issue loading your dashboard data. Please try refreshing."
+  }

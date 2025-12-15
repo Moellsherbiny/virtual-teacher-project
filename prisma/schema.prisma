@@ -207,7 +207,6 @@ model QuizQuestion {
   type        QuestionType
   maxScore    Float        @default(1)
   correctText String? // used for COMPLETE or WRITTEN auto-check
-
   quizId String
   quiz   Quiz   @relation(fields: [quizId], references: [id])
 

@@ -1,0 +1,11 @@
+{
+  "title": "My Courses",
+  "sortBy": "Sort by: Progress",
+  "progress": "Your Progress",
+  "continueLearning": "Continue Learning",
+  "noDescription": "No description provided for this course.",
+  "noCoursesTitle": "You are not enrolled in any courses.",
+  "noCoursesMessage": "Start your learning journey by exploring the course catalog and enrolling in a new course!",
+  "dataFetchErrorTitle": "Data Loading Error",
+  "dataFetchErrorMessage": "We could not load your full course list. Displaying sample data."
+}

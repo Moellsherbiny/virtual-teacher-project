@@ -3,6 +3,7 @@ import {getRequestConfig} from 'next-intl/server';
 import {Formats} from 'next-intl';
 import { hasLocale } from 'next-intl';
 import { routing } from './routing';
+import { loadMessages } from './loadMessages';
 
 export default getRequestConfig( async () => {
   const cookiesStore = await cookies();
@@ -10,26 +11,27 @@ export default getRequestConfig( async () => {
   const locale = hasLocale(routing.locales, requested)
   ? requested
     : routing.defaultLocale;;
-  const namespaces = [
-    'home', "about" , "auth","chatbot",
-    "contact" ,"navbar", "footer",
-    "otpVerification", "dashboard", "studentCourses",
-    "profile", 'courseAdmin', "course", "sidebar"];
+  // const namespaces = [
+  //   'home', "about" , "auth","chatbot",
+  //   "contact" ,"navbar", "footer",
+  //   "otpVerification", "dashboard", "studentCourses",
+  //   "profile", 'courseAdmin', "course", "sidebar",  'studentDashboard', 'myCourses'
+  // ];
   
-  let allMessages: Record<string, any> = {};
+  // let allMessages: Record<string, any> = {};
 
-  for (const ns of namespaces) {
-    try {
-      const mod = await import(`../messages/${locale}/${ns}.json`);
-      allMessages[ns] = mod.default;
-    } catch (error) {
-      console.warn(`⚠️ Missing translation file: ${locale}/${ns}.json`);
-    }
-  }
+  // for (const ns of namespaces) {
+  //   try {
+  //     const mod = await import(`../messages/${locale}/${ns}.json`);
+  //     allMessages[ns] = mod.default;
+  //   } catch (error) {
+  //     console.warn(`⚠️ Missing translation file: ${locale}/${ns}.json`);
+  //   }
+  // }
 
   return {
     locale,
-    messages: Object.assign({}, ...Object.entries(allMessages).map(([k, v]) => ({ [k]: v }))),
+    messages: await loadMessages(locale),
   };
 });
 
