@@ -22,7 +22,9 @@
     "courses":"Courses",
     "quizzes":"Quizzes",
     "manageCourses":"Manage Courses",
-    "manageQuizzes":"Manage Quizzes"
+    "manageQuizzes":"Manage Quizzes",
+    "settings":"Settings",
+    "my-courses":"My Courses"
   },
 "courseManagement": {
       "labels": {

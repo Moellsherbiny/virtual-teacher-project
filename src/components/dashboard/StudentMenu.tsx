@@ -2,37 +2,34 @@ import { Home, Inbox, Calendar, Search, Settings } from 'lucide-react'
 import React from 'react'
 import { SidebarMenu, SidebarMenuItem, SidebarMenuButton } from '../ui/sidebar'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 
 function StudentMenu() {
+    const t = useTranslations("dashboard.menu")
   const items = [
     {
-      title: "Home",
+      title: t("home"),
       url: "/dashboard",
       icon: Home,
     },
     {
-      title: "Courses",
+      title: t("courses"),
       url: "/courses",
       icon: Inbox,
     },
     {
-      title: "my-courses",
+      title: t("my-courses"),
       url: "/dashboard/my-courses",
       icon: Inbox,
     },
     {
-      title: "quizzes",
-      url: "/dashboard/quizzes",
+      title: t("quizzes"),
+      url: "/quizzes",
       icon: Calendar,
     },
     {
-      title: "Results",
-      url: "/dashboard/results",
-      icon: Search,
-    },
-    {
-      title: "Settings",
-      url: "#",
+      title: t("settings"),
+      url: "/dashboard/profile",
       icon: Settings,
     },
   ]

@@ -22,7 +22,9 @@
     "courses":"الدورات",
     "quizzes":"الاختبارات",
     "manageCourses":"إدارة الدورات التدريبية",
-    "manageQuizzes":"إدارة الاختبارات"
+    "manageQuizzes":"إدارة الاختبارات",
+    "settings":"الإعدادات",
+    "my-courses":"دوراتي"
   },
   "courseManagement": {
     "labels": {

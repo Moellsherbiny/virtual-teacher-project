@@ -1,4 +1,4 @@
-import { Home, Inbox, Calendar, Search, Settings, Users } from 'lucide-react'
+import { Home, Inbox, Search, Settings, Users } from 'lucide-react'
 import { SidebarMenu, SidebarMenuItem, SidebarMenuButton } from '../ui/sidebar'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
@@ -24,14 +24,19 @@ function AdminMenu() {
     },
     {
       title: t("quizzes"),
-      url: "/dashboard/results",
+      url: "/dashboard/quizzes",
       icon: Search,
+    },
+    {
+      title: t("settings"),
+      url: "/dashboard/profile",
+      icon: Settings,
     },
   ]
 
   return (
     <SidebarMenu>
-      {items.map((item,index) => (
+      {items.map((item, index) => (
         <SidebarMenuItem key={index}>
           <SidebarMenuButton asChild>
             <Link href={item.url}>
