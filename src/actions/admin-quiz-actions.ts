@@ -17,11 +17,17 @@ export async function getQuizAttempts(quizId: string): Promise<{
       name: string | null;
       email: string;
     };
-  }[];
+  }[], totalPossibleScore?: number;
   error?: string;
 }> {
   try {
-  
+    const quiz = await db.quiz.findUnique({
+      where: { id: quizId },
+      include: {
+        questions: { select: { maxScore: true } },
+      },
+    });
+    const totalPossibleScore = quiz?.questions.reduce((acc, q) => acc + (q.maxScore || 0), 0) || 0;
 
     const attempts = await db.quizAttempt.findMany({
       where: { quizId },
@@ -37,7 +43,7 @@ export async function getQuizAttempts(quizId: string): Promise<{
       },
     });
 
-    return { attempts };
+    return { attempts, totalPossibleScore };;
   } catch (error) {
     console.error("getQuizAttempts error:", error);
     return { error: "Failed to load quiz attempts" };
