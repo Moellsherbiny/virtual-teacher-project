@@ -89,7 +89,7 @@ export async function POST(req: Request) {
     // const aiResponseText = result.text; // Adjust based on exact SDK response structure
 
     const interaction = await ai.interactions.create({
-      model: "gemini-3.5-flash",
+      model: "gemini-2.5-flash",
       input: message,
     });
 
