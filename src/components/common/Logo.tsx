@@ -17,6 +17,7 @@ function Logo() {
           fill
           sizes="40px"
           className="object-contain p-1"
+          loading="eager"
         />
       </div>
 
