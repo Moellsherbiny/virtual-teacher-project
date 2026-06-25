@@ -18,7 +18,7 @@ export async function GET(req: NextRequest) {
   if (!conversationId) {
     return NextResponse.json(
       { error: "Missing conversationId" },
-      { status: 400 }
+      { status: 400 },
     );
   }
 
@@ -28,7 +28,7 @@ export async function GET(req: NextRequest) {
       where: { conversationId },
       orderBy: { createdAt: "asc" },
       // OPTIONAL: Verify the conversation belongs to the user for security
-      // You could join or check the parent conversation, but for simplicity, 
+      // You could join or check the parent conversation, but for simplicity,
       // we rely on the session check and the API being internal.
     });
 
@@ -37,7 +37,7 @@ export async function GET(req: NextRequest) {
     console.error("Error fetching chat messages:", error);
     return NextResponse.json(
       { error: "Failed to fetch messages" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -45,11 +45,16 @@ export async function GET(req: NextRequest) {
 export async function POST(req: Request) {
   try {
     const session = await auth();
-    if (!session?.user?.id) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    if (!session?.user?.id)
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
     const { message, conversationId } = await req.json();
 
-    if (!conversationId) return NextResponse.json({ error: "No conversation ID" }, { status: 400 });
+    if (!conversationId)
+      return NextResponse.json(
+        { error: "No conversation ID" },
+        { status: 400 },
+      );
 
     // 1. Save USER message to DB
     await prisma.chatMessage.create({
@@ -60,29 +65,35 @@ export async function POST(req: Request) {
       },
     });
 
-    // 2. Fetch recent history for context (limit to last 10 messages to save tokens)
-    const previousMessages = await prisma.chatMessage.findMany({
-      where: { conversationId },
-      orderBy: { createdAt: "asc" },
-      take: 10, 
+    // // 2. Fetch recent history for context (limit to last 10 messages to save tokens)
+    // const previousMessages = await prisma.chatMessage.findMany({
+    //   where: { conversationId },
+    //   orderBy: { createdAt: "asc" },
+    //   take: 10,
+    // });
+
+    // // 3. Format history for Google GenAI SDK
+    // // The SDK expects roles as "user" and "model"
+    // const history = previousMessages.map((msg) => ({
+    //   role: msg.role === "USER" ? "user" : "model",
+    //   parts: [{ text: msg.content }],
+    // }));
+
+    // // 4. Call Gemini
+    // const chat = ai.chats.create({
+    //   model: "gemini-2.5-flash",
+    //   history: history,
+    // });
+
+    // const result = await chat.sendMessage({ message });
+    // const aiResponseText = result.text; // Adjust based on exact SDK response structure
+
+    const interaction = await ai.interactions.create({
+      model: "gemini-3.5-flash",
+      input: message,
     });
 
-    // 3. Format history for Google GenAI SDK
-    // The SDK expects roles as "user" and "model"
-    const history = previousMessages.map((msg) => ({
-      role: msg.role === "USER" ? "user" : "model",
-      parts: [{ text: msg.content }],
-    }));
-
-    // 4. Call Gemini
-    const chat = ai.chats.create({
-      model: "gemini-2.5-flash",
-      history: history, 
-    });
-
-    const result = await chat.sendMessage({ message });
-    const aiResponseText = result.text; // Adjust based on exact SDK response structure
-
+    const aiResponseText = interaction.output_text?.trim();
     if (!aiResponseText)
       return NextResponse.json({ error: "No AI response" }, { status: 500 });
 
@@ -98,13 +109,15 @@ export async function POST(req: Request) {
     // 6. Update conversation timestamp
     await prisma.chatConversation.update({
       where: { id: conversationId },
-      data: { updatedAt: new Date() }
+      data: { updatedAt: new Date() },
     });
 
     return NextResponse.json(savedAiMessage);
-
   } catch (err) {
     console.error("Chat Error:", err);
-    return NextResponse.json({ error: "Failed to process message" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Failed to process message" },
+      { status: 500 },
+    );
   }
 }
